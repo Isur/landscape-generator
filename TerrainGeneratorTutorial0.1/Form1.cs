@@ -12,7 +12,7 @@ namespace TerrainGeneratorTutorial0._1
         private VertexBuffer vb = null;
         private IndexBuffer ib = null;
 
-        private bool useColor = true;
+        private bool useColor = false;
 
         private const int terWidth = 100;
         private const int terLength = 100;
@@ -53,6 +53,8 @@ namespace TerrainGeneratorTutorial0._1
 
             InitializeGraphics();
             InitializeEventHandler();
+
+            menuStrip1.Visible = false;
         }
         private void InitializeGraphics()
         {
@@ -74,7 +76,8 @@ namespace TerrainGeneratorTutorial0._1
             OnIndexBufferCreate(ib, null);
 
             //Initial Camera position
-            camPosition = new Vector3(terLength / 2, 4.5f, -3.5f);
+            camPosition = new Vector3(terLength / 2, 50f, -3.5f);
+            rotXZ = -0.5f;
             camUp = new Vector3(0, 1, 0); // the cameras up is looking actually up on the Y axis e.g. (0,-1,0) would turn the camera upside down
         }
         private void InitializeEventHandler()
@@ -82,8 +85,8 @@ namespace TerrainGeneratorTutorial0._1
             vb.Created += new EventHandler(OnVertexBufferCreate);
             ib.Created += new EventHandler(OnIndexBufferCreate);
 
-            this.KeyDown += new KeyEventHandler(OnKeyDown);
-            this.MouseWheel += new MouseEventHandler(OnMouseScroll);
+            //this.KeyDown += new KeyEventHandler(OnKeyDown);
+            //this.MouseWheel += new MouseEventHandler(OnMouseScroll);
 
             this.MouseMove += new MouseEventHandler(OnMouseMove);
             this.MouseDown += new MouseEventHandler(OnMouseDown);
