@@ -1,4 +1,4 @@
-﻿namespace TerrainGeneratorTutorial0._1
+﻿namespace TerrainGenerator
 {
     partial class Form1
     {
@@ -131,7 +131,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Terrain Generator Tutorial";
+            this.Text = "Terrain Generator";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TerrainGeneratorTutorial0._1
+namespace TerrainGenerator
 {
     public partial class Form1 : Form
     {

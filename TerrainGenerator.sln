@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainGeneratorTutorial0.1", "TerrainGeneratorTutorial0.1\TerrainGeneratorTutorial0.1.csproj", "{0191C305-B162-4976-BF07-65A47614B202}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainGenerator", "TerrainGenerator\TerrainGenerator.csproj", "{0191C305-B162-4976-BF07-65A47614B202}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerlinTest", "PerlinTest\PerlinTest.csproj", "{FE27D160-2747-440F-8AE7-1020DE0C7613}"
 EndProject

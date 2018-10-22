@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace TerrainGeneratorTutorial0._1
+namespace TerrainGenerator
 {
     static class Program
     {

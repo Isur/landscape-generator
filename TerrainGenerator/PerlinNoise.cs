@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TerrainGeneratorTutorial0._1
+namespace TerrainGenerator
 {
     class PerlinNoise
     {

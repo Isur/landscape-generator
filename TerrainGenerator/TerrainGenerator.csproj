@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0191C305-B162-4976-BF07-65A47614B202}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TerrainGeneratorTutorial0._1</RootNamespace>
-    <AssemblyName>TerrainGeneratorTutorial0.1</AssemblyName>
+    <RootNamespace>TerrainGenerator</RootNamespace>
+    <AssemblyName>TerrainGenerator</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -72,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
