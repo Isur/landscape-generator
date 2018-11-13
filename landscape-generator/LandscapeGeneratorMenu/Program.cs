@@ -17,7 +17,7 @@ namespace LandscapeGeneratorMenu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuUI());
+            Application.Run(new MenuForm());
         }
     }
 }

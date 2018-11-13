@@ -1,6 +1,6 @@
 ﻿namespace LandscapeGeneratorMenu.View
 {
-    partial class MenuUI
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -40,13 +40,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "This is a test label. Proceed with caution. Bites.";
             // 
-            // MenuUI
+            // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Name = "MenuUI";
+            this.Name = "MenuForm";
             this.Text = "MainMenu";
             this.ResumeLayout(false);
             this.PerformLayout();
