@@ -1,0 +1,60 @@
+﻿using InsightEngine.Contract;
+using Microsoft.DirectX;
+using Microsoft.DirectX.Direct3D;
+using System;
+
+namespace InsightEngine.Components
+{
+    public class CameraController : Component
+    {
+        public float MoveSpeed { get; set; } 
+        public double RotationSpeed { get; set; }
+
+        Vector3 camPosition;
+        float rotXZ;
+        float rotY = 0;
+        Vector3 camUp;
+        Vector3 camLookAt = new Vector3();
+
+
+        public override void Start()
+        {
+            camPosition = new Vector3(Transform.Position.X, Transform.Position.Y, Transform.Position.Z);
+            rotXZ = -0.8f;
+            camUp = new Vector3(0, 1, 0);
+
+            camLookAt.X = (float)Math.Sin(rotY) + camPosition.X + (float)(Math.Sin(rotXZ) * Math.Sin(rotY));    //      
+            camLookAt.Y = (float)Math.Sin(rotXZ) + camPosition.Y;  // Bind the camera lookAt somehow with the camera position, so once we move around we also move the lookAt
+            camLookAt.Z = (float)Math.Cos(rotY) + camPosition.Z + (float)(Math.Sin(rotXZ) * Math.Cos(rotY));  //
+
+
+            device.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 4, device.Viewport.Width / device.Viewport.Height, 1.0f, 1000.0f);  //sets the perspective and the field of view of the camer
+            device.Transform.View = Matrix.LookAtLH(camPosition, camLookAt, camUp); //sets the position, the lookat and the up vector of the camera
+
+            device.RenderState.Lighting = false;
+            device.RenderState.CullMode = Cull.CounterClockwise; //sets which site of the triangles should be shown
+            device.RenderState.FillMode = FillMode.Solid; //this sets the mode so we can actually see the triangle construct of the terrain
+        }
+
+        public override void Update()
+        {
+            Transform.Position = new Vector3(
+                Transform.Position.X + MoveSpeed * (float)Math.Sin(rotY),
+                Transform.Position.Y + MoveSpeed * (float)Math.Sin(rotXZ),
+                Transform.Position.Z + MoveSpeed * (float)Math.Cos(rotY));
+
+            //camPosition = new Vector3(Transform.Position.X, Transform.Position.Y, Transform.Position.Z);
+            rotXZ = -0.8f;
+            //rotY += 0.1f;
+            camUp = new Vector3(0, 1, 0);
+
+            Transform.Rotation = new Vector3(
+                (float)Math.Sin(rotY) + Transform.Position.X + (float)(Math.Sin(rotXZ) * Math.Sin(rotY)),  //      
+                (float)Math.Sin(rotXZ) + Transform.Position.Y,  // Bind the camera lookAt somehow with the camera position, so once we move around we also move the lookAt
+                (float)Math.Cos(rotY) + Transform.Position.Z + (float)(Math.Sin(rotXZ) * Math.Cos(rotY)));  //
+
+            device.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 4, device.Viewport.Width / device.Viewport.Height, 1.0f, 1000.0f);  //sets the perspective and the field of view of the camer
+            device.Transform.View = Matrix.LookAtLH(Transform.Position, Transform.Rotation, camUp);
+        }
+    }
+}
