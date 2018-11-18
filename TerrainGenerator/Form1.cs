@@ -1,5 +1,6 @@
 ﻿using InsightEngine;
 using InsightEngine.Components;
+using InsightEngine.Input;
 using System;
 using System.Windows.Forms;
 
@@ -58,10 +59,11 @@ namespace TerrainGenerator
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
 
-            //for (int i = 0; i < 5; i++)
+            //for (int i = 0; i < 1; i++)
             //{
             //    var t = new Entity();
-            //    var tg = new InsightEngine.Components.TerrainGenerator(mainScene.device);
+            //    var tg = new InsightEngine.Components.TerrainGenerator();
+            //    tg.Devider = 13f;
             //    t.AddComponent(tg);
             //    mainScene.AddEntity(t);
             //}
@@ -518,6 +520,30 @@ namespace TerrainGenerator
         {
             //GenerateVertex();
             //vb.SetData(verts, 0, LockFlags.None);
+        }
+
+
+        //Przekazanie inputu do silnika.
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keyboard.W = e.KeyCode == Keys.W;
+            Keyboard.S = e.KeyCode == Keys.S;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            Mouse.X = e.X;
+            Mouse.Y = e.Y;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Mouse.Click = true;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            Mouse.Click = false;
         }
     }
 }

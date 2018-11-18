@@ -1,4 +1,5 @@
-﻿using Microsoft.DirectX.Direct3D;
+﻿using InsightEngine.Input;
+using Microsoft.DirectX.Direct3D;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -56,6 +57,9 @@ namespace InsightEngine
 
             Device.EndScene();
             Device.Present();
+
+            Keyboard.Reset();
+            Mouse.Reset();
         }
     }
 }

@@ -8,8 +8,11 @@ namespace InsightEngine.Components
 {
     public class TerrainGenerator : Component
     {
-        public int Width { get; set; } = 100;
-        public int Lenght { get; set; } = 100;
+        public float Devider { get; set; } = 7f;
+        public float Multiplier { get; set; } = 20f;
+
+        public int Width { get; set; } = 1000;
+        public int Lenght { get; set; } = 1000;
         public bool UseColors { get; set; } = true;
 
         int vertCount { get; set; }
@@ -67,12 +70,18 @@ namespace InsightEngine.Components
             var min = 0f;
             var max = 0f;
 
+            var rand = new Random();
             // gererating array of heights, highest point and lowest point
             for (int z = 0; z < Width; z++)
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = perlin.Get(x / 7f, z / 7f) * 20;
+                    var y = perlin.Get(x / Devider, z / Devider);
+                    if (y > 0)
+                        y *= rand.Next(1, 60);
+                    else
+                        y *= rand.Next(1, 3);
+
                     perlinVerts[x, z] = y;
 
                     if (y < min) min = y;
