@@ -19,7 +19,9 @@ namespace LandscapeGeneratorMenu.View.Settings
         {
             InitializeComponent();
             CreatePresenter();
-            this.chkBoxDrawTextures.Checked = Properties.Settings.Default.DrawTextures;
+            this.ChckBxProperty = Properties.Settings.Default.chkBx;
+            this.TrckBrProperty = Properties.Settings.Default.trckBr;
+            this.CmbBxProperty = Properties.Settings.Default.cmbBx;
             this.ActiveControl = grpMainSettings;
         }
 
@@ -30,7 +32,28 @@ namespace LandscapeGeneratorMenu.View.Settings
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.chkBx = this.ChckBxProperty;
+            Properties.Settings.Default.trckBr = this.TrckBrProperty;
+            Properties.Settings.Default.cmbBx = this.CmbBxProperty;
+            Properties.Settings.Default.Save();
             this.Close();
+        }
+
+        public string CmbBxProperty {
+            get => this.cmbBxTemplate.Text;
+            set => this.cmbBxTemplate.Text = value;
+        }
+
+        public int TrckBrProperty
+        {
+            get => this.trckBrTemplate.Value;
+            set => this.trckBrTemplate.Value = value;
+        }
+
+        public bool ChckBxProperty
+        {
+            get => this.chkBxTemplate.Checked;
+            set => this.chkBxTemplate.Checked = value;
         }
     }
 }

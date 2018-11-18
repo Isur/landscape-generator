@@ -28,25 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chkBoxDrawTextures = new System.Windows.Forms.CheckBox();
+            this.chkBxTemplate = new System.Windows.Forms.CheckBox();
             this.grpMainSettings = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.trckBrTemplate = new System.Windows.Forms.TrackBar();
+            this.cmbBxTemplate = new System.Windows.Forms.ComboBox();
             this.grpMainSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckBrTemplate)).BeginInit();
             this.SuspendLayout();
             // 
-            // chkBoxDrawTextures
+            // chkBxTemplate
             // 
-            this.chkBoxDrawTextures.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkBoxDrawTextures.Location = new System.Drawing.Point(3, 16);
-            this.chkBoxDrawTextures.Name = "chkBoxDrawTextures";
-            this.chkBoxDrawTextures.Size = new System.Drawing.Size(478, 24);
-            this.chkBoxDrawTextures.TabIndex = 1;
-            this.chkBoxDrawTextures.Text = "Draw textures";
-            this.chkBoxDrawTextures.UseVisualStyleBackColor = true;
+            this.chkBxTemplate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.chkBxTemplate.Location = new System.Drawing.Point(3, 16);
+            this.chkBxTemplate.Name = "chkBxTemplate";
+            this.chkBxTemplate.Size = new System.Drawing.Size(478, 24);
+            this.chkBxTemplate.TabIndex = 1;
+            this.chkBxTemplate.Text = "CheckBox";
+            this.chkBxTemplate.UseVisualStyleBackColor = true;
             // 
             // grpMainSettings
             // 
-            this.grpMainSettings.Controls.Add(this.chkBoxDrawTextures);
+            this.grpMainSettings.Controls.Add(this.cmbBxTemplate);
+            this.grpMainSettings.Controls.Add(this.trckBrTemplate);
+            this.grpMainSettings.Controls.Add(this.chkBxTemplate);
             this.grpMainSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpMainSettings.Location = new System.Drawing.Point(0, 0);
             this.grpMainSettings.Name = "grpMainSettings";
@@ -66,6 +71,29 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // trckBrTemplate
+            // 
+            this.trckBrTemplate.Location = new System.Drawing.Point(3, 46);
+            this.trckBrTemplate.Maximum = 5;
+            this.trckBrTemplate.Name = "trckBrTemplate";
+            this.trckBrTemplate.Size = new System.Drawing.Size(104, 45);
+            this.trckBrTemplate.TabIndex = 3;
+            // 
+            // cmbBxTemplate
+            // 
+            this.cmbBxTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBxTemplate.FormattingEnabled = true;
+            this.cmbBxTemplate.Items.AddRange(new object[] {
+            "optionA",
+            "optionB",
+            "optionC",
+            "optionD",
+            "optionE"});
+            this.cmbBxTemplate.Location = new System.Drawing.Point(174, 46);
+            this.cmbBxTemplate.Name = "cmbBxTemplate";
+            this.cmbBxTemplate.Size = new System.Drawing.Size(121, 21);
+            this.cmbBxTemplate.TabIndex = 4;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,14 +104,18 @@
             this.Name = "SettingsForm";
             this.Text = "SettingsForm";
             this.grpMainSettings.ResumeLayout(false);
+            this.grpMainSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trckBrTemplate)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.CheckBox chkBoxDrawTextures;
+        private System.Windows.Forms.CheckBox chkBxTemplate;
         private System.Windows.Forms.GroupBox grpMainSettings;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TrackBar trckBrTemplate;
+        private System.Windows.Forms.ComboBox cmbBxTemplate;
     }
 }

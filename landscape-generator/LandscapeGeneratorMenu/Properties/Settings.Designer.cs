@@ -23,12 +23,39 @@ namespace LandscapeGeneratorMenu.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool DrawTextures {
+        public bool chkBx {
             get {
-                return ((bool)(this["DrawTextures"]));
+                return ((bool)(this["chkBx"]));
+            }
+            set {
+                this["chkBx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int trckBr {
+            get {
+                return ((int)(this["trckBr"]));
+            }
+            set {
+                this["trckBr"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("optionA")]
+        public string cmbBx {
+            get {
+                return ((string)(this["cmbBx"]));
+            }
+            set {
+                this["cmbBx"] = value;
             }
         }
     }
