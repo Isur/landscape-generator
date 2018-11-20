@@ -20,37 +20,60 @@
 \subsection{Zespół}
 Artur Bednarczyk, Dawid Grajewski, Tomasz Januszek.
 \subsection{Temat}
-TREŚĆ ZADANIA
-\subsection{Cel}
-Opis treści.
+\paragraph{Generowanie realistycznych krajobrazów 3D}
+Generowanie w języku wysokiego poziomu (nie w generatorach typu Unity) losowych krajobrazów z uwzględnieniem zadanych parametrów: stromizny terenu, poziomu wody, kolorów na danej wysokości lub obszarzem wizualizacja i symulacja przemieszczania kamery.
+
+Bonus: dodanie roślinności (drzewa, krzewy - co najmniej 3 rodzaje) o zadanej częstości i miejscu występowania.
+
 \section{Projekt}
 \subsection{Plany i pomysły}
-Co chcemy zrobić
+
 \subsection{UI/UX}
 \subsubsection{Zawartość}
+UI generatora pozwoli na ustalenie parametrów zgodnie z którymi zostanie wygenerowany krajobraz. Parametry te to: \begin{itemize}
+\item Stromizna terenu
+\item Poziom wody
+\item Górzystość
+\item itp.
+\end{itemize}
 \subsubsection{Projekty UI}
+includegraphics
 \section{Teoria}
 \subsection{Losowość}
-Kilka słów o losowości w naszej aplikacji.
+Celem projektu jest wygenerowanie losowego krajobrazu, więc sama losowość jest bardzo ważna. Każdy kolejny krajobraz powinien być inny, a prawdopodobieństwo wystąpienia dwóch podobnych obrazów bardzo niskie. Takie efekty możemy uzyskać dzięki algorytmowi jakim jest "Szum Perlina"
 \subsection{Algorytmy}
 \subsubsection{Szum Perlina}
-Szum Perlina - co to jest, opis algorytmu itp.
+Bazę dla naszego sposobu generowania danych potrzebnych do wyświetlenia zróżnicowanego terenu stanowi szum Perlina. Jest to jeden z typów szumu gradientowego utworzony przez Kena Perlina już w 1983 roku dla potrzeby tworzenia realistycznych grafik komputerowych. 
+Algorytm składa się z trzech kroków
+\begin{itemize}
+\item Pierwszym krokiem jest zdefiniowanie wielowymiarowej siatki jednostkowych wektorów rozpatrywanego gradientu. W naszym przypadku są to wartości losowe z zakresu (0, 1) liczb rzeczywistych. Dla jednowymiarowego przypadku byłyby dostępne jedynie wartości -1 albo 1
+\item Kolejno iteruje się po podawanych punktach. Punkt wpada do pewnej komórki wygenerowanej siatki. Następnie wyliczany jest iloczyn skalarny między punktem a wektorem każdego z rogów komórki (a więc ich odległość), po czym zapisane zostają w pamięci.
+\item Przeprowadzona zostaje interpolacja dla każdej pary punktów z uwzględnieniem funkcji wygładzającej.
+\end{itemize}
+Wynikowo otrzymujemy wielowymiarową macierz (lub tensor) zawierający wartości zamknięte w pewnych granicach. Jest możliwe nakładanie na siebie wielu takich macierzy generowanych dla różnych częstotliwości siatki w celu uzyskania różnych ułożeń lub skupień wartości.
 \section{Narzędzia}
 \subsection{Kontrola wersji}
 Do zarządzania kodem i wersjami projektu wykorzystujemy narzędzie Git. Korzystamy z platformy GitHub jako repozytorium dostępnego online. Dobór narzędzi służących do korzystania z repozytorium to sprawa indywidualna każdego członka zespołu, ponieważ nie ma ona wpływu na sam projekt.
 \subsection{Zarzadzanie zespołem}
-Trello - Kanban Board
+Trello - Kanban Board - to tutaj rozpisujemy zadania i przydzielamy je sobie, określamy również terminy i planujemy.
 \subsection{Środowisko}
-Visual Studio
+Visual Studio 2015 \\
+Do wyświetlenia terenu wykorzystujemy zestaw funkcji API wspomagający generowanie grafiki – DirectX wraz z DirectX Software Development Kit używany z C\#.
 \section{Aplikacja}
 \subsection{Architektura}
-Wzorce architektoniczne
+Utworzony silnik graficzny jest wzorowany na istniejących już popularnych silnikach do gier takich jak Unity, Cry czy Unreal Engine. Opiera się on na trzech głównych składowych: \begin{itemize}
+\item scena - obiekt nadrzędny, to w nim rozgrywa się akcja.
+\item encja - umieszczona w scenie. Jest to pojedynczy agent w scenie, np. kamera, teren czy postać. 
+\item komponent - to składowa encji - odpowiada za część logiki encji (przykładowo, encja "player" może mieć komponenty takie jak "moveComponent" czy "shootComponent"
+\\
+Silnik jest zbudowany zgodnie z wzrocem kompozytu - encja składa się z kompenentów, ale pojedynczy komponent może zawierać kolejne, zagnieżdżone komponenty. Pozwala to na rekurencyjne wykonywanie metod w obiektach o tym samym interfejsie.
+\end{itemize}
 \subsection{Struktury danych}
-Dane przechowujemy ...
+Dane o wygenerowanym terenie będą przechowywane w pliku .json. Umożliwi nam to zapisanie i późniejsze odtworzenie terenu.
 \subsection{Schemat graficzny struktury systemu}
 \includegraphics[width=1\textwidth]{images/klasy.png}
 \subsection{Komunikacja między modułami}
-Jak to wszystko się komunikuje
+IN PROGRESS
 \section{API}
 \subsection{Perlin}
 Tworzymy obiekt PerlinNoise, który wymaga podania rozmiaru i wymiarów.
