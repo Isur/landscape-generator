@@ -72,7 +72,7 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 150f, -3.5f);
+                new Microsoft.DirectX.Vector3(terraintGenerator.Width, 1000f, 1000f);
 
             camera.AddComponent(cameraController);
 

@@ -9,6 +9,18 @@ namespace InsightEngine.Components
 {
     public class TerrainGenerator : Component
     {
+
+        public int Depth = 200; //depth
+        public float scale1 = 4.3f;
+        public float scale2 = 2.5f;
+        public float scale3 = 50f;
+        public float scale1weight = 1f;
+        public float scale2weight = 0.5f;
+        public float scale3weight = 0.01f;
+        public float power = 5f;
+        public float offsetX = 100f;
+        public float offsetZ = 100f;
+
         public float Devider { get; set; } = 7f;
         public float Multiplier { get; set; } = 20f;
 
@@ -77,11 +89,17 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = perlin.CalculatePerlin(x / Devider, z / Devider);
-                    if (y > 0)
-                        y *= rand.Next(1, 60);
-                    else
-                        y *= rand.Next(1, 3);
+                    // var y = perlin.CalculatePerlin(x / Devider, z / Devider);
+                    float y = scale1weight * perlin.CalculatePerlin((float)x / Width * scale1, (float)z / Width * scale1) + scale2weight * perlin.CalculatePerlin((float)x / Width * scale2, (float)z / Width * scale2) + scale3weight * perlin.CalculatePerlin((float)x / Width * scale3, (float)z / Width * scale3);
+
+                    y += 0.5f;
+                    y *= 5;
+                    y = (float)Math.Pow(y, 5);
+
+                    //if (y > 0)
+                    // //   y *= rand.Next(1, 60);
+                    //else
+                    // //   y *= rand.Next(1, 3);
 
                     perlinVerts[x, z] = y;
 
@@ -96,15 +114,16 @@ namespace InsightEngine.Components
                 for (int x = 0; x < Lenght; x++)
                 {
                     var y = perlinVerts[x, z];
+                    float heightColor = y / max * 255;
                     verts[k].Position = new Vector3(x, y, z);
 
                     int color = Color.Blue.ToArgb();
                     if (UseColors)
                     {
-                        if (y > 0)
+                        if (y > (max/10))
                             color = Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
                         else
-                            color = Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
+                            color = Color.FromArgb((int)heightColor, 255, 0).ToArgb();
                     }
                     else
                     {

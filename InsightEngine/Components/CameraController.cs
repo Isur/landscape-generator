@@ -8,7 +8,7 @@ namespace InsightEngine.Components
 {
     public class CameraController : Component
     {
-        public float MoveSpeed { get; set; } = 1f;
+        public float MoveSpeed { get; set; } = 5f;
         public double RotationSpeed { get; set; } = 0.02f;
 
         float speed;
