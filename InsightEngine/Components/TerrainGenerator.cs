@@ -9,8 +9,8 @@ namespace InsightEngine.Components
 {
     public class TerrainGenerator : Component
     {
-        public float Devider { get; set; } = 7f;
-        public float Multiplier { get; set; } = 20f;
+        public float Devider { get; set; } = 99f;
+        public float Multiplier { get; set; } = 1000f;
 
         public int Width { get; set; } = 1000;
         public int Lenght { get; set; } = 1000;
@@ -24,6 +24,8 @@ namespace InsightEngine.Components
 
         VertexBuffer vertexBuffer { get; set; } = null;
         IndexBuffer indexBuffer { get; set; } = null;
+
+        public float[,] PerlinVerts { get; private set; }
 
 
         public override void Start()
@@ -67,7 +69,7 @@ namespace InsightEngine.Components
             var perlin = new SimplePerlinNoise(Width, 2);
             int k = 0;
 
-            var perlinVerts = new float[Width, Lenght];
+            PerlinVerts = new float[Width, Lenght];
             var min = 0f;
             var max = 0f;
 
@@ -77,13 +79,13 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = perlin.CalculatePerlin(x / Devider, z / Devider);
-                    if (y > 0)
-                        y *= rand.Next(1, 60);
-                    else
-                        y *= rand.Next(1, 3);
+                    var y = perlin.CalculatePerlin(x / Devider, z / Devider) * Multiplier;
+                    //if (y > 0)
+                    //    y *= rand.Next(1, 60);
+                    //else
+                    //    y *= rand.Next(1, 3);
 
-                    perlinVerts[x, z] = y;
+                    PerlinVerts[x, z] = y;
 
                     if (y < min) min = y;
                     if (y > max) max = y;
@@ -95,7 +97,7 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = perlinVerts[x, z];
+                    var y = PerlinVerts[x, z];
                     verts[k].Position = new Vector3(x, y, z);
 
                     int color = Color.Blue.ToArgb();
@@ -158,6 +160,28 @@ namespace InsightEngine.Components
         {
             VertexBuffer buffer = (VertexBuffer)sender;
             buffer.SetData(verts, 0, LockFlags.None); //puts all vertices from the vertex array into the vertex buffer
+        }
+
+        public static TerrainGenerator operator +(TerrainGenerator first, TerrainGenerator second)
+        {
+            if (first.Lenght != second.Lenght ||
+                first.Width != second.Width)
+                throw new Exception();
+
+            var verts = new float[first.Width, first.Lenght];
+
+            for (int i = 0; i < first.Width; i++)
+            {
+                for (int j = 0; j < first.Lenght; j++)
+                {
+                    if (first.PerlinVerts[j, i] > second.PerlinVerts[j, i])
+                        verts[j, i] = first.PerlinVerts[j, i];
+                    else
+                        verts[j, i] = second.PerlinVerts[j, i];
+                }
+            }
+
+            return null;
         }
     }
 }

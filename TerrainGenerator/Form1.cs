@@ -2,6 +2,7 @@
 using InsightEngine.Components;
 using InsightEngine.Input;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace TerrainGenerator
@@ -59,6 +60,10 @@ namespace TerrainGenerator
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
 
+            var shape = new Entity();
+            var shapeRenderer = new CuboidRenderer();
+            shape.AddComponent(shapeRenderer);
+
             //for (int i = 0; i < 1; i++)
             //{
             //    var t = new Entity();
@@ -69,16 +74,18 @@ namespace TerrainGenerator
             //}
 
             var cameraController = new CameraController();
+            cameraController.MoveSpeed = 10;
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 150f, -3.5f);
+                new Microsoft.DirectX.Vector3(0,150,-3.5f/*terraintGenerator.Width / 2, 150f, -3.5f*/);
 
             camera.AddComponent(cameraController);
 
 
             mainScene.AddEntity(terrain);
             mainScene.AddEntity(camera);
+            mainScene.AddEntity(shape);
 
             mainScene.Start();
         }
@@ -194,6 +201,7 @@ namespace TerrainGenerator
 
             mainScene.Update();
             this.Invalidate();
+            Thread.Sleep(10);
         }
         //private void GenerateVertex()
         //{
