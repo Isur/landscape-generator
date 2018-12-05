@@ -117,7 +117,6 @@ namespace InsightEngine.Components
                     k++;
                 }
             }
-
         }
 
         float map(float s, float a1, float a2, float b1, float b2)

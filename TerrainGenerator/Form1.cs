@@ -1,5 +1,6 @@
 ﻿using InsightEngine;
 using InsightEngine.Components;
+using InsightEngine.Components.Renderers;
 using InsightEngine.Input;
 using System;
 using System.Threading;
@@ -78,7 +79,7 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(0,150,-3.5f/*terraintGenerator.Width / 2, 150f, -3.5f*/);
+                new Microsoft.DirectX.Vector3(0, 150, -3.5f/*terraintGenerator.Width / 2, 150f, -3.5f*/);
 
             camera.AddComponent(cameraController);
 

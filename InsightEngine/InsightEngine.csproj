@@ -54,7 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\CameraController.cs" />
-    <Compile Include="Components\CuboidRenderer.cs" />
+    <Compile Include="Components\Renderers\CuboidRenderer.cs" />
+    <Compile Include="Components\Renderers\ShapeRenderer.cs" />
     <Compile Include="Components\TerrainGenerator.cs" />
     <Compile Include="Contract\Component.cs" />
     <Compile Include="Entity.cs" />
