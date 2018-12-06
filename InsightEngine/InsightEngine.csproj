@@ -70,10 +70,6 @@
       <Project>{c07f63cc-c217-43d9-82c9-fd2776234ee5}</Project>
       <Name>PerlinNoise</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PerlinTest\PerlinTest.csproj">
-      <Project>{fe27d160-2747-440f-8ae7-1020de0c7613}</Project>
-      <Name>PerlinTest</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
