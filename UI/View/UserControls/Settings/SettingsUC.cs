@@ -25,5 +25,21 @@ namespace UI.View.UserControls.Settings
         {
             this.settingsPresenter = new SettingsPresenter(this);
         }
+
+        private void btnSaveAndGenerate_Click(object sender, EventArgs e)
+        {
+            this.settingsPresenter.GenerateTerrain();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public int WaterLevel { get { return this.trBarWaterLevel.Value; } set { this.trBarWaterLevel.Value = value; } }
+        public int Stepness { get { return this.trBarStepness.Value; } set { this.trBarStepness.Value = value; } }
+        public int Mountainousness { get { return this.trBarMountainousness.Value; } set { this.trBarMountainousness.Value = value; } }
+        public int EnvironmentElements { get { return this.trBarEnvironmentElements.Value; } set { this.trBarEnvironmentElements.Value = value; } }
     }
+
 }

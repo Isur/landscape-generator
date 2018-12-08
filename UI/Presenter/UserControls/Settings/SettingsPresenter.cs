@@ -14,5 +14,10 @@ namespace UI.Presenter.UserControls.Settings
         {
             this.settingsView = settingsView;
         }
+
+        public void GenerateTerrain()
+        {
+            //TODO: Generate terrain and save to file in JSON format
+        }
     }
 }

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presenter\Menu\MenuFormPresenter.cs" />
+    <Compile Include="Presenter\UserControls\Interface\IUserControl.cs" />
     <Compile Include="Presenter\UserControls\MenuOptions\MenuOptionsPresenter.cs" />
     <Compile Include="Presenter\UserControls\Settings\SettingsPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -90,6 +91,12 @@
     </Compile>
     <EmbeddedResource Include="View\Menu\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\MenuOptions\MenuOptionsUC.resx">
+      <DependentUpon>MenuOptionsUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\Settings\SettingsUC.resx">
+      <DependentUpon>SettingsUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

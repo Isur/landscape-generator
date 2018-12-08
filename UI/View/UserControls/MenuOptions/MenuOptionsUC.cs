@@ -25,5 +25,25 @@ namespace UI.View.UserControls.MenuOptions
         {
             this.menuOptionsPresenter = new MenuOptionsPresenter(this);
         }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInstructions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

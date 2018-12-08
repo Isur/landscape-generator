@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Presenter.Menu;
 using UI.View.Menu.Interface;
+using UI.View.UserControls.MenuOptions;
 
 namespace UI.View.Menu
 {
@@ -19,7 +20,7 @@ namespace UI.View.Menu
         {
             InitializeComponent();
             CreatePresenter();
-            //this.ActiveControl = lblTitle;
+            InitializeMenuOptions();
         }
 
         void CreatePresenter()
@@ -27,11 +28,13 @@ namespace UI.View.Menu
             this.menuFormPresenter = new MenuFormPresenter(this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void InitializeMenuOptions()
         {
-            Properties.Settings.Default.TestSetting = "CHECK";
-            Properties.Settings.Default.Save();
-            this.button1.Text = Properties.Settings.Default.TestSetting;
+            UserControl menuOptionsUC = new MenuOptionsUC
+            {
+                Dock = DockStyle.Fill
+            };
+            this.Controls.Add(menuOptionsUC);
         }
     }
 }
