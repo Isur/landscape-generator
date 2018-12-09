@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UI.View.Menu.Interface
+namespace UI.View.UserControls.MenuOptions.Interface
 {
     interface IMenuView
     {

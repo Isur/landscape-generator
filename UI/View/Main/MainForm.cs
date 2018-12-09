@@ -13,10 +13,10 @@ using UI.View.UserControls.MenuOptions;
 
 namespace UI.View.Menu
 {
-    public partial class MenuForm : Form, IMenuView
+    public partial class MainForm : Form, IMainView
     {
-        private MenuFormPresenter menuFormPresenter;
-        public MenuForm()
+        private MainFormPresenter mainFormPresenter;
+        public MainForm()
         {
             InitializeComponent();
             CreatePresenter();
@@ -25,16 +25,18 @@ namespace UI.View.Menu
 
         void CreatePresenter()
         {
-            this.menuFormPresenter = new MenuFormPresenter(this);
+            this.mainFormPresenter = new MainFormPresenter(this);
         }
 
         private void InitializeMenuOptions()
         {
-            UserControl menuOptionsUC = new MenuOptionsUC
+            this.CurrentUserControl = new MenuUC
             {
                 Dock = DockStyle.Fill
             };
-            this.Controls.Add(menuOptionsUC);
+            this.Controls.Add(CurrentUserControl);
         }
+
+        public UserControl CurrentUserControl { get; set; }
     }
 }

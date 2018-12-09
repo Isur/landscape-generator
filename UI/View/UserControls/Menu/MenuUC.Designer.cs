@@ -1,6 +1,6 @@
 ﻿namespace UI.View.UserControls.MenuOptions
 {
-    partial class MenuOptionsUC
+    partial class MenuUC
     {
         /// <summary> 
         /// Required designer variable.

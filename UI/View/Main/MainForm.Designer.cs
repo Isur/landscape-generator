@@ -1,6 +1,6 @@
 ﻿namespace UI.View.Menu
 {
-    partial class MenuForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

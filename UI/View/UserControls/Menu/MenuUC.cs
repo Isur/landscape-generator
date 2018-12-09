@@ -12,10 +12,10 @@ using UI.Presenter.UserControls.MenuOptions;
 
 namespace UI.View.UserControls.MenuOptions
 {
-    public partial class MenuOptionsUC : UserControl, IMenuOptionsView
+    public partial class MenuUC : UserControl, IMenuView
     {
-        private MenuOptionsPresenter menuOptionsPresenter;
-        public MenuOptionsUC()
+        private MenuPresenter menuPresenter;
+        public MenuUC()
         {
             InitializeComponent();
             CreatePresenter();
@@ -23,7 +23,7 @@ namespace UI.View.UserControls.MenuOptions
 
         void CreatePresenter()
         {
-            this.menuOptionsPresenter = new MenuOptionsPresenter(this);
+            this.menuPresenter = new MenuPresenter(this);
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
