@@ -9,20 +9,8 @@ namespace InsightEngine.Components
 {
     public class TerrainGenerator : Component
     {
-
-        public int Depth = 200; //depth
-        public float scale1 = 4.3f;
-        public float scale2 = 2.5f;
-        public float scale3 = 50f;
-        public float scale1weight = 1f;
-        public float scale2weight = 0.5f;
-        public float scale3weight = 0.01f;
-        public float power = 5f;
-        public float offsetX = 100f;
-        public float offsetZ = 100f;
-
-        public float Devider { get; set; } = 7f;
-        public float Multiplier { get; set; } = 20f;
+        public float Devider { get; set; } = 99f;
+        public float Multiplier { get; set; } = 1000f;
 
         public int Width { get; set; } = 1000;
         public int Lenght { get; set; } = 1000;
@@ -36,6 +24,8 @@ namespace InsightEngine.Components
 
         VertexBuffer vertexBuffer { get; set; } = null;
         IndexBuffer indexBuffer { get; set; } = null;
+
+        public float[,] PerlinVerts { get; private set; }
 
 
         public override void Start()
@@ -79,7 +69,7 @@ namespace InsightEngine.Components
             var perlin = new SimplePerlinNoise(Width, 2);
             int k = 0;
 
-            var perlinVerts = new float[Width, Lenght];
+            PerlinVerts = new float[Width, Lenght];
             var min = 0f;
             var max = 0f;
 
@@ -89,8 +79,13 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    float y = perlin.CalculatePerlinOctaves(x, z, Width);
-                    perlinVerts[x, z] = y;
+                    var y = perlin.CalculatePerlin(x / Devider, z / Devider) * Multiplier;
+                    //if (y > 0)
+                    //    y *= rand.Next(1, 60);
+                    //else
+                    //    y *= rand.Next(1, 3);
+
+                    PerlinVerts[x, z] = y;
 
                     if (y < min) min = y;
                     if (y > max) max = y;
@@ -102,17 +97,16 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = perlinVerts[x, z];
-                    float heightColor = y / max * 255;
+                    var y = PerlinVerts[x, z];
                     verts[k].Position = new Vector3(x, y, z);
 
                     int color = Color.Blue.ToArgb();
                     if (UseColors)
                     {
-                        if (y > (max / 10))
+                        if (y > 0)
                             color = Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
                         else
-                            color = Color.FromArgb((int)heightColor, 255, 0).ToArgb();
+                            color = Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
                     }
                     else
                     {
@@ -123,7 +117,6 @@ namespace InsightEngine.Components
                     k++;
                 }
             }
-
         }
 
         float map(float s, float a1, float a2, float b1, float b2)
@@ -166,6 +159,28 @@ namespace InsightEngine.Components
         {
             VertexBuffer buffer = (VertexBuffer)sender;
             buffer.SetData(verts, 0, LockFlags.None); //puts all vertices from the vertex array into the vertex buffer
+        }
+
+        public static TerrainGenerator operator +(TerrainGenerator first, TerrainGenerator second)
+        {
+            if (first.Lenght != second.Lenght ||
+                first.Width != second.Width)
+                throw new Exception();
+
+            var verts = new float[first.Width, first.Lenght];
+
+            for (int i = 0; i < first.Width; i++)
+            {
+                for (int j = 0; j < first.Lenght; j++)
+                {
+                    if (first.PerlinVerts[j, i] > second.PerlinVerts[j, i])
+                        verts[j, i] = first.PerlinVerts[j, i];
+                    else
+                        verts[j, i] = second.PerlinVerts[j, i];
+                }
+            }
+
+            return null;
         }
     }
 }

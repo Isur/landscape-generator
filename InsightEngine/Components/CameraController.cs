@@ -1,7 +1,6 @@
 ﻿using InsightEngine.Contract;
 using InsightEngine.Input;
 using Microsoft.DirectX;
-using Microsoft.DirectX.Direct3D;
 using System;
 
 namespace InsightEngine.Components
@@ -30,13 +29,8 @@ namespace InsightEngine.Components
             camLookAt.Y = (float)Math.Sin(rotXZ) + camPosition.Y;  // Bind the camera lookAt somehow with the camera position, so once we move around we also move the lookAt
             camLookAt.Z = (float)Math.Cos(rotY) + camPosition.Z + (float)(Math.Sin(rotXZ) * Math.Cos(rotY));  //
 
-
             device.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 4, device.Viewport.Width / device.Viewport.Height, 1.0f, 1000.0f);  //sets the perspective and the field of view of the camer
             device.Transform.View = Matrix.LookAtLH(camPosition, camLookAt, camUp); //sets the position, the lookat and the up vector of the camera
-
-            device.RenderState.Lighting = false;
-            device.RenderState.CullMode = Cull.CounterClockwise; //sets which site of the triangles should be shown
-            device.RenderState.FillMode = FillMode.Solid; //this sets the mode so we can actually see the triangle construct of the terrain
         }
 
         public override void Update()
@@ -61,7 +55,7 @@ namespace InsightEngine.Components
                 (float)Math.Sin(rotXZ) + Transform.Position.Y,  // Bind the camera lookAt somehow with the camera position, so once we move around we also move the lookAt
                 (float)Math.Cos(rotY) + Transform.Position.Z + (float)(Math.Sin(rotXZ) * Math.Cos(rotY)));  //
 
-            device.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 4, device.Viewport.Width / device.Viewport.Height, 1.0f, 1000.0f);  //sets the perspective and the field of view of the camer
+            device.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 4, device.Viewport.Width / device.Viewport.Height, 1.0f, 10000.0f);  //sets the perspective and the field of view of the camer
             device.Transform.View = Matrix.LookAtLH(Transform.Position, Transform.Rotation, camUp);
         }
 
