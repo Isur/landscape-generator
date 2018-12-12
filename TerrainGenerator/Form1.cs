@@ -62,8 +62,10 @@ namespace TerrainGenerator
             terrain.AddComponent(terraintGenerator);
 
             var shape = new Entity();
-            var shapeRenderer = new CuboidRenderer();
-            shape.AddComponent(shapeRenderer);
+            var cuboidRenderer = new CuboidRenderer();
+            var bushRenderer = new SimpleBushRenderer();
+            //shape.AddComponent(cuboidRenderer);
+            //shape.AddComponent(bushRenderer);
 
             //for (int i = 0; i < 1; i++)
             //{

@@ -1,8 +1,10 @@
 ﻿using InsightEngine.Contract;
+using InsightEngine.Model.Color;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
 using PerlinNoise;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace InsightEngine.Components
@@ -26,6 +28,8 @@ namespace InsightEngine.Components
         IndexBuffer indexBuffer { get; set; } = null;
 
         public float[,] PerlinVerts { get; private set; }
+
+        private ColorManager colorManager { get; set; }
 
 
         public override void Start()
@@ -92,6 +96,17 @@ namespace InsightEngine.Components
                 }
             }
 
+            var regions = new List<ColorRegion>()
+            {
+                new ColorRegion(Color.FromArgb(240, 240, 240)), // Biały na szczyty gór
+                new ColorRegion(Color.FromArgb(180, 170, 170)), // Szary na wzniesienia
+                new ColorRegion(Color.FromArgb(175, 120, 50)), // Brązowy na ziemie
+                new ColorRegion(Color.FromArgb(60, 200, 60)), // Zielony na doliny
+                new ColorRegion(Color.FromArgb(55, 120, 230)) // Niebieski na wodę 
+            };
+
+            colorManager = new ColorManager((int)min, (int)max, regions);
+
             // initialize vertexes
             for (int z = 0; z < Width; z++)
             {
@@ -104,9 +119,9 @@ namespace InsightEngine.Components
                     if (UseColors)
                     {
                         if (y > 0)
-                            color = Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
+                            color = colorManager.GetColor((int)y);//Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
                         else
-                            color = Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
+                            color = colorManager.GetColor((int)y);//Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
                     }
                     else
                     {
