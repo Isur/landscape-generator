@@ -32,9 +32,10 @@ namespace InsightEngine.Model.Color
 
         public int GetColor(int height)
         {
+            var variation = random.Next(-20, 20);
             foreach (var region in regions)
             {
-                if (height > region.StartHeight)
+                if (height + variation > region.StartHeight)
                 {
                     var r = GetColorValue(region.Color.R + random.Next(-colorVariation, colorVariation));
                     var g = GetColorValue(region.Color.G + random.Next(-colorVariation, colorVariation));
@@ -44,7 +45,7 @@ namespace InsightEngine.Model.Color
                 }
             }
 
-            return 0;
+            return regions[regions.Count - 1].Color.ToArgb();
         }
 
         private int GetColorValue(int color)

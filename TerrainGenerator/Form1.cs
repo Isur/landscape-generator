@@ -81,12 +81,17 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(0, 150, -3.5f/*terraintGenerator.Width / 2, 150f, -3.5f*/);
+                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 500f, -3.5f);
 
             camera.AddComponent(cameraController);
 
 
+            var terrain2 = new Entity();
+            var terrainGenerator2 = new InsightEngine.Components.TerrainGenerator();
+            terrain2.AddComponent(terrainGenerator2);
+
             mainScene.AddEntity(terrain);
+            //mainScene.AddEntity(terrain2);
             mainScene.AddEntity(camera);
             mainScene.AddEntity(shape);
 

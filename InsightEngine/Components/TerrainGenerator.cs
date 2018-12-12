@@ -14,8 +14,8 @@ namespace InsightEngine.Components
         public float Devider { get; set; } = 99f;
         public float Multiplier { get; set; } = 1000f;
 
-        public int Width { get; set; } = 1000;
-        public int Lenght { get; set; } = 1000;
+        public int Width { get; set; } = 2000;
+        public int Lenght { get; set; } = 2000;
         public bool UseColors { get; set; } = true;
 
         int vertCount { get; set; }
