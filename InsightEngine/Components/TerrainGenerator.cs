@@ -83,12 +83,7 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = perlin.CalculatePerlin(x / Devider, z / Devider) * Multiplier;
-                    //if (y > 0)
-                    //    y *= rand.Next(1, 60);
-                    //else
-                    //    y *= rand.Next(1, 3);
-
+                    var y = perlin.CalculatePerlinOctaves(x, z, Width);
                     PerlinVerts[x, z] = y;
 
                     if (y < min) min = y;
