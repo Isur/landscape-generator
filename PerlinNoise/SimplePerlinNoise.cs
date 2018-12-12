@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using PerlinNoise;
+using PerlinNoise.Config;
+
 namespace PerlinNoise
 {
     public class SimplePerlinNoise
@@ -16,6 +18,15 @@ namespace PerlinNoise
             this.numberOfDimensions = numberOfDimensions;
 
             generateGradient();
+        }
+
+        public float CalculatePerlinOctaves(int x, int z, int Width)
+        {
+            float y = CalculateScaledPerlin(x, z, Width);
+            PerlinValueSetter.ElevateTerrainUnit(ref y);
+            PerlinValueSetter.AdjustToStepness(ref y);
+
+            return y;
         }
 
         private void generateGradient()
@@ -51,7 +62,7 @@ namespace PerlinNoise
             return dot;
         }
 
-        public float CalculatePerlin(float x, float y)
+        private float CalculateSimplePerlin(float x, float y)
         {
             // Grid cells coordinates
             int x0 = (int)x;
@@ -74,6 +85,16 @@ namespace PerlinNoise
             finallValue = linearInterpolationHelper(interpolation1, interpolation2, weightY);
 
             return finallValue;
+        }
+
+        private float CalculateScaledPerlin(int x, int z, int Width)
+        {
+            float y = 0f;
+            foreach (KeyValuePair<float, float> scale in PerlinParameters.Scales)
+            {
+                y += scale.Value * CalculateSimplePerlin((float)x / Width * scale.Key, (float)z / Width * scale.Key);
+            }
+            return y;
         }
     }
 }

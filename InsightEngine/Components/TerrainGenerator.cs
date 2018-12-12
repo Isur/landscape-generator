@@ -89,18 +89,7 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    // var y = perlin.CalculatePerlin(x / Devider, z / Devider);
-                    float y = scale1weight * perlin.CalculatePerlin((float)x / Width * scale1, (float)z / Width * scale1) + scale2weight * perlin.CalculatePerlin((float)x / Width * scale2, (float)z / Width * scale2) + scale3weight * perlin.CalculatePerlin((float)x / Width * scale3, (float)z / Width * scale3);
-
-                    y += 0.5f;
-                    y *= 5;
-                    y = (float)Math.Pow(y, 5);
-
-                    //if (y > 0)
-                    // //   y *= rand.Next(1, 60);
-                    //else
-                    // //   y *= rand.Next(1, 3);
-
+                    float y = perlin.CalculatePerlinOctaves(x, z, Width);
                     perlinVerts[x, z] = y;
 
                     if (y < min) min = y;
@@ -120,7 +109,7 @@ namespace InsightEngine.Components
                     int color = Color.Blue.ToArgb();
                     if (UseColors)
                     {
-                        if (y > (max/10))
+                        if (y > (max / 10))
                             color = Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
                         else
                             color = Color.FromArgb((int)heightColor, 255, 0).ToArgb();

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\PerlinParameters.cs" />
+    <Compile Include="Config\PerlinValueSetter.cs" />
     <Compile Include="SimplePerlinNoise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
