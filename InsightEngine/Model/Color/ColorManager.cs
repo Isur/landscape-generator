@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.DirectX;
+using PerlinNoise;
+using System;
 using System.Collections.Generic;
 
 namespace InsightEngine.Model.Color
@@ -10,7 +12,10 @@ namespace InsightEngine.Model.Color
         private int minHeight { get; set; }
 
         private Random random { get; } = new Random();
-        private int colorVariation { get; } = 15;
+        private int colorVariation { get; } = 10;
+
+        private const int width = 500;
+        private SimplePerlinNoise perlin = new SimplePerlinNoise(width, 3);
 
 
         public ColorManager(int maxHeight, int minHeight, List<ColorRegion> regions)
@@ -30,16 +35,21 @@ namespace InsightEngine.Model.Color
                 (range / regions.Count));
         }
 
-        public int GetColor(int height)
+        public int GetColor(Vector3 position)
         {
-            var variation = random.Next(-20, 20);
+            var randomVariation = random.Next(-2, 2);
+            var variation = (int)perlin.CalculatePerlinOctaves((int)position.X, (int)position.Z, width);//random.Next(-20, 20);
+            variation /= 10;
             foreach (var region in regions)
             {
-                if (height + variation > region.StartHeight)
+                if (position.Y + variation + randomVariation > region.StartHeight)
                 {
                     var r = GetColorValue(region.Color.R + random.Next(-colorVariation, colorVariation));
                     var g = GetColorValue(region.Color.G + random.Next(-colorVariation, colorVariation));
                     var b = GetColorValue(region.Color.B + random.Next(-colorVariation, colorVariation));
+                    //var r = GetColorValue(region.Color.R + variation);
+                    //var g = GetColorValue(region.Color.G + variation);
+                    //var b = GetColorValue(region.Color.B + variation);
                     var color = System.Drawing.Color.FromArgb(r, g, b).ToArgb();
                     return color;
                 }

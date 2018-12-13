@@ -114,9 +114,9 @@ namespace InsightEngine.Components
                     if (UseColors)
                     {
                         if (y > 0)
-                            color = colorManager.GetColor((int)y);//Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
+                            color = colorManager.GetColor(verts[k].Position);//Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
                         else
-                            color = colorManager.GetColor((int)y);//Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
+                            color = colorManager.GetColor(verts[k].Position);//Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
                     }
                     else
                     {
