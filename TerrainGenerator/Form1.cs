@@ -77,11 +77,11 @@ namespace TerrainGenerator
             //}
 
             var cameraController = new CameraController();
-            cameraController.MoveSpeed = 10;
+            cameraController.MoveSpeed = 20;
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 500f, -3.5f);
+                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775f, -1000f);
 
             camera.AddComponent(cameraController);
 
