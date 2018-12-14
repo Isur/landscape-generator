@@ -7,6 +7,42 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{xcolor}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
 \title{Landscape Generator\\Inżyniera Oprogramowania}
 \author{Artur Bednarczyk, Dawid Grajewski, Tomasz Januszek\\Politechnika Śląska\\Wydział Matematyki Stosowanej\\Informatyka, semestr V}
 \date{\today}
@@ -18,7 +54,13 @@
 \newpage
 \section{O projekcie}
 \subsection{Zespół}
-Artur Bednarczyk, Dawid Grajewski, Tomasz Januszek.
+\begin{tabular}{c|l}
+Osoba & Główna odpowiedzialność \\
+\hline
+Artur Bednarczyk & Algorytm generujący kształt terenu, organizacja, dokumentacja \\
+Dawid Grajewski & Silnik wyświetlający teren \\
+Tomasz Januszek & UI aplikacji, algorytm generujący kształt terenu
+\end{tabular}
 \subsection{Temat}
 \paragraph{Generowanie realistycznych krajobrazów 3D}
 Generowanie w języku wysokiego poziomu (nie w generatorach typu Unity) losowych krajobrazów z uwzględnieniem zadanych parametrów: stromizny terenu, poziomu wody, kolorów na danej wysokości lub obszarzem wizualizacja i symulacja przemieszczania kamery.
@@ -27,22 +69,32 @@ Bonus: dodanie roślinności (drzewa, krzewy - co najmniej 3 rodzaje) o zadanej 
 
 \section{Projekt}
 \subsection{Plany i pomysły}
-
+Zgodnie z założeniami projektu, głównym naszym celem jest wygenerowanie losowego krajobrazu, który będzie realistyczny, przy czym nie wykorzystamy gotowych silników typu Unity. Plan jest taki, aby użytkownik mógł podać parametry, zgodnie z którymi zostanie wygenerowany krajobraz oraz miał możliwość zapisania i odczytania wybranego krajobrazu. Chcemy również dodać możliwość wyświetlania dodatkowych elementów, takich jak drzewa, krzewy.
 \subsection{UI/UX}
 \subsubsection{Zawartość}
-UI generatora pozwoli na ustalenie parametrów zgodnie z którymi zostanie wygenerowany krajobraz. Parametry te to: \begin{itemize}
-\item Stromizna terenu
-\item Poziom wody
-\item Górzystość
-\item Gęstość dodatkowych elementów
-\item Położenie dodatkowych elementów
-Dodatkowo użytkownik uzyska możliwość zapisywania wygenerowanego terenu 
+UI programu będzie złożone z kilku elementów:
+\begin{itemize}
+\item Menu - pozwoli na przejście do ustawień generowania, informacji o aplikacji oraz do wczytania wcześniej zapisanego krajobrazu.
+\item Ustawienia generowania - pozwoli na ustawienie konkretnych parametrów, zgodnie z którymi zostanie wygenerowany krajobraz. Parametry te to: 
+	\begin{itemize}
+	\item Stromizna terenu
+	\item Poziom wody
+	\item Górzystość
+	\item Gęstość dodatkowych elementów
+	\item Położenie dodatkowych elementów
+	\item Rozmiar krajobrazu
+	\end{itemize}
+	\item Informacje - o aplikacji, autorach
+	\item Wygenerowany krajobraz - tutaj użytkownik może się poruszać po obszarze, który został wygenerowany oraz go zapisać.
 \end{itemize}
 \subsubsection{Projekty UI}
-includegraphics
+\includegraphics[width=0.5\textwidth]{Images/ui-mainForm.jpg}
+\includegraphics[width=0.5\textwidth]{Images/ui-about.jpg}
+\includegraphics[width=0.5\textwidth]{Images/ui-settings.jpg}
+\includegraphics[width=0.5\textwidth]{Images/ui-landscape.jpg}
 \section{Teoria}
 \subsection{Losowość}
-Celem projektu jest wygenerowanie losowego krajobrazu, więc sama losowość jest bardzo ważna. Każdy kolejny krajobraz powinien być inny, a prawdopodobieństwo wystąpienia dwóch podobnych obrazów bardzo niskie. Takie efekty możemy uzyskać dzięki algorytmowi jakim jest "Szum Perlina"
+Celem projektu jest wygenerowanie losowego krajobrazu, więc sama losowość jest bardzo ważna. Każdy kolejny krajobraz powinien być inny, a prawdopodobieństwo wystąpienia dwóch podobnych obrazów bardzo niskie. Takie efekty możemy uzyskać dzięki algorytmowi jakim jest ,,Szum Perlina''
 \subsection{Algorytmy}
 \subsubsection{Szum Perlina}
 Bazę dla naszego sposobu generowania danych potrzebnych do wyświetlenia zróżnicowanego terenu stanowi szum Perlina. Jest to jeden z typów szumu gradientowego utworzony przez Kena Perlina już w 1983 roku dla potrzeby tworzenia realistycznych grafik komputerowych. 
@@ -71,7 +123,35 @@ Utworzony silnik graficzny jest wzorowany na istniejących już popularnych siln
 Silnik jest zbudowany zgodnie z wzrocem kompozytu - encja składa się z kompenentów, ale pojedynczy komponent może zawierać kolejne, zagnieżdżone komponenty. Pozwala to na rekurencyjne wykonywanie metod w obiektach o tym samym interfejsie.
 \end{itemize}
 \subsection{Struktury danych}
-Dane o wygenerowanym terenie będą przechowywane w pliku .json. Umożliwi nam to zapisanie i późniejsze odtworzenie terenu.
+Dane o wygenerowanym terenie będą przechowywane w pliku .json. Umożliwi nam to zapisanie i późniejsze odtworzenie terenu. Plik będzie przechowywał tablice odpowiadające za kształt terenu wraz z kolorami oraz drugą tablicę, która będzie przechowywać infromacje na temat położenia dodatkowych elementów wraz z typem danego elementu. Przykladowy plik .json.
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+  "waterLevel": 10,
+  "size": 15,
+  "terrain":[{
+	"x": 1,
+	"y": 1,
+	"z": 1,
+	"color": 213},{
+	"x": 2,
+	"y": 1,
+	"z": 3,
+	"color": 123
+	}
+  ],
+  "elements":[
+  { "x": 1,
+	"y": 1,
+	"z": 1,
+	"type": "treeType-2"},
+  { "x": 4,
+	"y": 2,
+	"z": 3,
+	"type": "treeType-1"}
+  ]
+}
+0123456789
+\end{lstlisting}
 \subsection{Schemat graficzny struktury systemu}
 \includegraphics[width=1\textwidth]{images/klasy.png}
 \subsection{Komunikacja między modułami}
