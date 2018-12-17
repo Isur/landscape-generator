@@ -29,10 +29,20 @@ namespace InsightEngine.Model.Color
 
         private void AssignRegions()
         {
+            var weightSum = 0.0;
+            regions.ForEach(x => weightSum += x.Weight);
+
             var range = maxHeight - minHeight;
-            regions.ForEach(x => x.StartHeight =
-                minHeight + (regions.LastIndexOf(x) + 1) *
-                (range / regions.Count));
+            var fragment = range / weightSum;
+
+            var currentHeight = minHeight;
+
+            regions.ForEach(x =>
+            {
+                x.StartHeight =
+                  (int)(currentHeight + fragment * x.Weight);
+                currentHeight = x.StartHeight;
+            });
         }
 
         public int GetColor(Vector3 position)
