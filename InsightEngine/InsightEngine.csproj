@@ -58,6 +58,7 @@
     <Compile Include="Components\Renderers\ShapeRenderer.cs" />
     <Compile Include="Components\Renderers\SimpleBushRenderer.cs" />
     <Compile Include="Components\TerrainGenerator.cs" />
+    <Compile Include="Components\WaterGenerator.cs" />
     <Compile Include="Contract\Component.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Input\Keyboard.cs" />

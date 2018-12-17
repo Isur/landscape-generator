@@ -1,27 +1,16 @@
-﻿using InsightEngine.Contract;
-using InsightEngine.Model.Color;
-using Microsoft.DirectX;
+﻿using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
-using PerlinNoise;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace InsightEngine.Components
 {
-    public class TerrainGenerator : Component
+    public class WaterGenerator : Contract.Component
     {
-        public float Devider { get; set; } = 99f;
-        public float Multiplier { get; set; } = 1000f;
-
         public int Width { get; set; } = 2000;
         public int Lenght { get; set; } = 2000;
-        public bool UseColors { get; set; } = true;
 
-        public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
-
-        int vertCount { get; set; }
-        int indCount { get; set; }
+        public int Height { get; set; } = 100;
 
         CustomVertex.PositionColored[] verts { get; set; } = null;
         int[] indices { get; set; } = null;
@@ -29,19 +18,19 @@ namespace InsightEngine.Components
         VertexBuffer vertexBuffer { get; set; } = null;
         IndexBuffer indexBuffer { get; set; } = null;
 
-        public float[,] PerlinVerts { get; private set; }
+        int vertCount { get; set; }
+        int indCount { get; set; }
 
-        private ColorManager colorManager { get; set; }
+        Random random = new Random();
+        int variation = 10;
 
-        public SimplePerlinNoise Perlin { get; set; }
 
         public override void Start()
         {
             vertCount = Width * Lenght;
             indCount = (Width - 1) * (Lenght - 1) * 6;
 
-            GenerateTerrain();
-
+            GenerateWater();
             CreateEvents();
         }
 
@@ -52,7 +41,7 @@ namespace InsightEngine.Components
             device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, vertCount, 0, indCount / 3); //draws the triangles depending on the style we set it using the information from indices
         }
 
-        private void GenerateTerrain()
+        private void GenerateWater()
         {
             GenerateVertex();
             GenerateIndex();
@@ -75,56 +64,19 @@ namespace InsightEngine.Components
             verts = new CustomVertex.PositionColored[vertCount];
             int k = 0;
 
-            PerlinVerts = new float[Width, Lenght];
-            var min = 0f;
-            var max = 0f;
-
-            var rand = new Random();
-            // gererating array of heights, highest point and lowest point
-            for (int z = 0; z < Width; z++)
-            {
-                for (int x = 0; x < Lenght; x++)
-                {
-                    var y = Perlin.CalculatePerlinOctaves(x, z, Width);
-                    PerlinVerts[x, z] = y;
-
-                    if (y < min) min = y;
-                    if (y > max) max = y;
-                }
-            }
-
-            colorManager = new ColorManager((int)min, (int)max, Regions);
-
             // initialize vertexes
             for (int z = 0; z < Width; z++)
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = PerlinVerts[x, z];
-                    verts[k].Position = new Vector3(x, y, z);
+                    verts[k].Position = new Vector3(x, Height, z);
 
-                    int color = Color.Blue.ToArgb();
-                    if (UseColors)
-                    {
-                        if (y > 0)
-                            color = colorManager.GetColor(verts[k].Position);//Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
-                        else
-                            color = colorManager.GetColor(verts[k].Position);//Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
-                    }
-                    else
-                    {
-                        color = Color.FromArgb(0, 0, (int)map(y, min, max, 185, 255)).ToArgb();
-                    }
+                    var color = Color.Blue;
 
-                    verts[k].Color = color;
+                    verts[k].Color = color.ToArgb();
                     k++;
                 }
             }
-        }
-
-        float map(float s, float a1, float a2, float b1, float b2)
-        {
-            return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
         }
 
         private void GenerateIndex() // Generating all the indices vor the Index buffer (Her we tell how to connect the vertices to creat triangles)

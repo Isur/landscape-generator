@@ -86,6 +86,10 @@
       <Project>{a40181ce-446a-49e3-9346-b0721f75b6a6}</Project>
       <Name>InsightEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PerlinNoise\PerlinNoise.csproj">
+      <Project>{C07F63CC-C217-43D9-82C9-FD2776234EE5}</Project>
+      <Name>PerlinNoise</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

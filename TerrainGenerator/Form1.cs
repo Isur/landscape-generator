@@ -2,7 +2,11 @@
 using InsightEngine.Components;
 using InsightEngine.Components.Renderers;
 using InsightEngine.Input;
+using InsightEngine.Model.Color;
+using PerlinNoise;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -56,7 +60,21 @@ namespace TerrainGenerator
             //dodawanie komponentów
             mainScene = new Scene(this);
 
+            var perlin = new SimplePerlinNoise(2000, 2);
+
+            var regions = new List<ColorRegion>()
+            {
+                new ColorRegion(Color.FromArgb(240, 240, 240), 1), // Biały na szczyty gór
+                new ColorRegion(Color.FromArgb(180, 170, 170), 1), // Szary na wzniesienia
+                new ColorRegion(Color.FromArgb(175, 120, 50), 0.4), // Brązowy na ziemie
+                new ColorRegion(Color.FromArgb(60, 200, 60), 1.6), // Zielony na doliny
+                new ColorRegion(Color.FromArgb(230, 235, 80), 0.2), //Zółty na piasek
+                new ColorRegion(Color.FromArgb(55, 120, 230), 1) // Niebieski na wodę 
+            };
+
             var terraintGenerator = new InsightEngine.Components.TerrainGenerator();
+            terraintGenerator.Regions.AddRange(regions);
+            terraintGenerator.Perlin = perlin;
 
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
@@ -86,10 +104,16 @@ namespace TerrainGenerator
             camera.AddComponent(cameraController);
 
 
-            var terrain2 = new Entity();
-            var terrainGenerator2 = new InsightEngine.Components.TerrainGenerator();
-            terrain2.AddComponent(terrainGenerator2);
+            //var terrain2 = new Entity();
+            //var terrainGenerator2 = new InsightEngine.Components.TerrainGenerator();
+            //terrainGenerator2.Regions.AddRange(regions);
+            //terrain2.AddComponent(terrainGenerator2);
 
+            var waterGenerator = new WaterGenerator();
+            var water = new Entity();
+            water.AddComponent(waterGenerator);
+
+            //mainScene.AddEntity(water);
             mainScene.AddEntity(terrain);
             //mainScene.AddEntity(terrain2);
             mainScene.AddEntity(camera);
