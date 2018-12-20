@@ -79,5 +79,39 @@ namespace InsightEngine.Components.Renderers
         /// </summary>
         /// <param name="indices"></param>
         protected abstract void SetIndices(List<short> indices);
+
+        protected void LoadMesh(string filename, ref Mesh mesh, ref Material[] meshmaterials, ref Texture[] meshtextures, ref float meshradius)
+        {
+            ExtendedMaterial[] materialarray;
+            mesh = Mesh.FromFile(filename, MeshFlags.Managed, device, out materialarray);
+
+            if ((materialarray != null) && (materialarray.Length > 0))
+            {
+                meshmaterials = new Material[materialarray.Length];
+                meshtextures = new Texture[materialarray.Length];
+
+                for (int i = 0; i < materialarray.Length; i++)
+                {
+                    meshmaterials[i] = materialarray[i].Material3D;
+                    meshmaterials[i].Ambient = meshmaterials[i].Diffuse;
+
+                    if ((materialarray[i].TextureFilename != null) && (materialarray[i].TextureFilename != string.Empty))
+                    {
+                        meshtextures[i] = TextureLoader.FromFile(device, materialarray[i].TextureFilename);
+                    }
+                }
+            }
+
+            mesh = mesh.Clone(mesh.Options.Value, CustomVertex.PositionNormalTextured.Format, device);
+            mesh.ComputeNormals();
+
+            float scaling = 0.0005f;
+
+            VertexBuffer vertices = mesh.VertexBuffer;
+            GraphicsStream stream = vertices.Lock(0, 0, LockFlags.None);
+            Vector3 meshcenter;
+            meshradius = Geometry.ComputeBoundingSphere(stream, mesh.NumberVertices, mesh.VertexFormat, out meshcenter) * scaling;
+            vertices.Unlock();
+        }
     }
 }

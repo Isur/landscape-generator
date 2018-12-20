@@ -7,8 +7,8 @@ namespace InsightEngine.Components
 {
     public class CameraController : Component
     {
-        public float MoveSpeed { get; set; } = 1f;
-        public double RotationSpeed { get; set; } = 0.02f;
+        public float MoveSpeed { get; set; } = 5f;
+        public float RotationSpeed { get; set; } = 0.04f;
 
         float speed;
 
@@ -71,17 +71,17 @@ namespace InsightEngine.Components
             if (Mouse.Click)
             {
                 if (Mouse.DeltaX < 0)
-                    rotY -= 0.02f;
+                    rotY -= RotationSpeed;
                 else if (Mouse.DeltaX > 0)
-                    rotY += 0.02f;
+                    rotY += RotationSpeed;
 
                 if (Mouse.DeltaY < 0)
                     if (rotXZ < Math.PI / 2)
-                        rotXZ += 0.02f;
+                        rotXZ += RotationSpeed;
 
                 if (Mouse.DeltaY > 0)
                     if (rotXZ > -Math.PI / 2)
-                        rotXZ -= 0.02f;
+                        rotXZ -= RotationSpeed;
             }
         }
     }

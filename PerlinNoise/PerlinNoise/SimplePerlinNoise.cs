@@ -1,11 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using PerlinNoise;
+using PerlinNoise.Config;
+using PerlinNoise.Interface;
+
 namespace PerlinNoise
 {
-    public class SimplePerlinNoise
+    public class SimplePerlinNoise : INoiseGenerator
     {
+        #region Private variables
+
         private int gradientSize;
         private float[,,] gradient;
         private int numberOfDimensions;
+
+        #endregion
 
         public SimplePerlinNoise(int gradientSize, int numberOfDimensions)
         {
@@ -15,6 +25,16 @@ namespace PerlinNoise
             generateGradient();
         }
 
+        public float CalculateNoiseValue(int x, int z, int Size)
+        {
+            float y = CalculateScaledPerlin(x, z, Size);
+            PerlinValueSetter.ElevateTerrainUnit(ref y);
+            PerlinValueSetter.AdjustToStepness(ref y);
+
+            return y;
+        }
+
+        #region Private methods
         private void generateGradient()
         {
             Random rand = new Random();
@@ -48,7 +68,7 @@ namespace PerlinNoise
             return dot;
         }
 
-        public float CalculatePerlin(float x, float y)
+        private float CalculateSimplePerlin(float x, float y)
         {
             // Grid cells coordinates
             int x0 = (int)x;
@@ -72,5 +92,16 @@ namespace PerlinNoise
 
             return finallValue;
         }
+
+        private float CalculateScaledPerlin(int x, int z, int Size)
+        {
+            float y = 0f;
+            foreach (KeyValuePair<float, float> scale in PerlinParameters.Scales)
+            {
+                y += scale.Value * CalculateSimplePerlin((float)x / Size * scale.Key, (float)z / Size * scale.Key);
+            }
+            return y;
+        }
+        #endregion
     }
 }

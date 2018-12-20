@@ -56,11 +56,15 @@
     <Compile Include="Components\CameraController.cs" />
     <Compile Include="Components\Renderers\CuboidRenderer.cs" />
     <Compile Include="Components\Renderers\ShapeRenderer.cs" />
+    <Compile Include="Components\Renderers\SimpleBushRenderer.cs" />
     <Compile Include="Components\TerrainGenerator.cs" />
+    <Compile Include="Components\WaterGenerator.cs" />
     <Compile Include="Contract\Component.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Input\Keyboard.cs" />
     <Compile Include="Input\Mouse.cs" />
+    <Compile Include="Model\Color\ColorManager.cs" />
+    <Compile Include="Model\Color\ColorRegion.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transform.cs" />
