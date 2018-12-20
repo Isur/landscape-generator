@@ -60,8 +60,6 @@ namespace TerrainGenerator
             //dodawanie komponentów
             mainScene = new Scene(this);
 
-            var perlin = new SimplePerlinNoise(2000, 2);
-
             var regions = new List<ColorRegion>()
             {
                 new ColorRegion(Color.FromArgb(240, 240, 240), 0.5), // Biały na szczyty gór
@@ -81,7 +79,7 @@ namespace TerrainGenerator
 
             var terraintGenerator = new InsightEngine.Components.TerrainGenerator();
             terraintGenerator.Regions.AddRange(regions);
-            terraintGenerator.Perlin = perlin;
+            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2); ;
 
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);

@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="Config\PerlinParameters.cs" />
     <Compile Include="Config\PerlinValueSetter.cs" />
-    <Compile Include="SimplePerlinNoise.cs" />
+    <Compile Include="Interface\INoiseGenerator.cs" />
+    <Compile Include="PerlinNoise\SimplePerlinNoise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
