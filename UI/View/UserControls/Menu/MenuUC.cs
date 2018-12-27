@@ -38,12 +38,20 @@ namespace UI.View.UserControls.MenuOptions
 
         private void btnInstructions_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Instrukcje użytkowania", "Instrukcje");
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Informacje o programie Landscape Generator oraz silniku graficznym Insight", "About");
+        }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz wyjść z aplikacji?", "Wyjdź z aplikacji", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

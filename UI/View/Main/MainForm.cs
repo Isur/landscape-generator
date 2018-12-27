@@ -30,13 +30,21 @@ namespace UI.View.Menu
 
         private void InitializeMenuOptions()
         {
-            this.CurrentUserControl = new MenuUC
+            this.UserControlContainer = new MenuUC
             {
                 Dock = DockStyle.Fill
             };
-            this.Controls.Add(CurrentUserControl);
         }
 
-        public UserControl CurrentUserControl { get; set; }
+        public ContainerControl UserControlContainer
+        {
+            set
+            {
+                this.Controls.Clear();
+                this.Controls.Add(value);
+            }
+        }
+
+        public event PropertyChangedEventHandler CurrentUserControChanged;
     }
 }

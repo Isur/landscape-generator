@@ -83,6 +83,7 @@
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLoad
             // 
@@ -94,7 +95,7 @@
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // MenuOptionsUC
+            // MenuUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +105,7 @@
             this.Controls.Add(this.btnInstructions);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.lblProjectTitle);
-            this.Name = "MenuOptionsUC";
+            this.Name = "MenuUC";
             this.Size = new System.Drawing.Size(600, 700);
             this.ResumeLayout(false);
             this.PerformLayout();
