@@ -10,6 +10,14 @@ namespace UI.Presenter.UserControls.MenuOptions
     class MenuPresenter
     {
         private IMenuView menuView;
+
+        public event EventHandler SettingsLaunched;
+
+        public MenuPresenter()
+        {
+                
+        }
+
         public MenuPresenter(IMenuView menuView)
         {
             this.menuView = menuView;

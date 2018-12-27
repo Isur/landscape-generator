@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.lblProjectTitle = new System.Windows.Forms.Label();
-            this.btnGenerate = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.btnInstructions = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnLoadLandscape = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblProjectTitle
@@ -45,15 +45,15 @@
             this.lblProjectTitle.TabIndex = 0;
             this.lblProjectTitle.Text = "Landscape Generator";
             // 
-            // btnGenerate
+            // btnSettings
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(168, 102);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(236, 23);
-            this.btnGenerate.TabIndex = 1;
-            this.btnGenerate.Text = "Set / Generate Terrain";
-            this.btnGenerate.UseVisualStyleBackColor = true;
-            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            this.btnSettings.Location = new System.Drawing.Point(168, 102);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(236, 23);
+            this.btnSettings.TabIndex = 1;
+            this.btnSettings.Text = "Set terrain settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnInstructions
             // 
@@ -85,25 +85,25 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnLoad
+            // btnLoadLandscape
             // 
-            this.btnLoad.Location = new System.Drawing.Point(57, 145);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(462, 52);
-            this.btnLoad.TabIndex = 2;
-            this.btnLoad.Text = "Load Landscape";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnLoadLandscape.Location = new System.Drawing.Point(57, 145);
+            this.btnLoadLandscape.Name = "btnLoadLandscape";
+            this.btnLoadLandscape.Size = new System.Drawing.Size(462, 52);
+            this.btnLoadLandscape.TabIndex = 2;
+            this.btnLoadLandscape.Text = "Load Landscape";
+            this.btnLoadLandscape.UseVisualStyleBackColor = true;
+            this.btnLoadLandscape.Click += new System.EventHandler(this.btnLoadLandscape_Click);
             // 
             // MenuUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnLoadLandscape);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.btnInstructions);
-            this.Controls.Add(this.btnGenerate);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lblProjectTitle);
             this.Name = "MenuUC";
             this.Size = new System.Drawing.Size(600, 700);
@@ -115,10 +115,10 @@
         #endregion
 
         private System.Windows.Forms.Label lblProjectTitle;
-        private System.Windows.Forms.Button btnGenerate;
+        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnInstructions;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnLoadLandscape;
     }
 }

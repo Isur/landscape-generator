@@ -9,12 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.View.UserControls.MenuOptions.Interface;
 using UI.Presenter.UserControls.MenuOptions;
+using UI.Model.Enumeration;
+using System.Threading;
 
 namespace UI.View.UserControls.MenuOptions
 {
     public partial class MenuUC : UserControl, IMenuView
     {
         private MenuPresenter menuPresenter;
+        public event EventHandler SettingsLaunched;
+
         public MenuUC()
         {
             InitializeComponent();
@@ -26,14 +30,21 @@ namespace UI.View.UserControls.MenuOptions
             this.menuPresenter = new MenuPresenter(this);
         }
 
-        private void btnGenerate_Click(object sender, EventArgs e)
+        [STAThread]
+        private void btnLoadLandscape_Click(object sender, EventArgs e)
         {
+            //Thread landscapeThread = new Thread(delegate ()
+            //{
+            //    new TerrainGenerator.Form1().Show();
+            //});
 
+            //landscapeThread.SetApartmentState(ApartmentState.STA);
+            //landscapeThread.Start();
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-
+            LaunchSettings();
         }
 
         private void btnInstructions_Click(object sender, EventArgs e)
@@ -52,6 +63,11 @@ namespace UI.View.UserControls.MenuOptions
             {
                 Application.Exit();
             }
+        }
+
+        private void LaunchSettings()
+        {
+            SettingsLaunched?.Invoke(this, null);
         }
     }
 }

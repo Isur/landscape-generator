@@ -45,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Enumeration\MainFormUserControls.cs" />
     <Compile Include="Presenter\Main\MainFormPresenter.cs" />
-    <Compile Include="Presenter\UserControls\Interface\IUserControl.cs" />
     <Compile Include="Presenter\UserControls\MenuOptions\MenuPresenter.cs" />
     <Compile Include="Presenter\UserControls\Settings\SettingsPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -58,13 +58,6 @@
     <Compile Include="View\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\About\AboutUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UserControls\About\AboutUC.Designer.cs">
-      <DependentUpon>AboutUC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControls\About\Interface\IAboutView.cs" />
     <Compile Include="View\UserControls\Menu\Interface\IMenuView.cs" />
     <Compile Include="View\UserControls\Menu\MenuUC.cs">
       <SubType>UserControl</SubType>
@@ -112,7 +105,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <ProjectReference Include="..\PerlinNoise\PerlinNoise.csproj">
+      <Project>{c07f63cc-c217-43d9-82c9-fd2776234ee5}</Project>
+      <Name>PerlinNoise</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TerrainGenerator\TerrainGenerator.csproj">
+      <Project>{0191c305-b162-4976-bf07-65a47614b202}</Project>
+      <Name>TerrainGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

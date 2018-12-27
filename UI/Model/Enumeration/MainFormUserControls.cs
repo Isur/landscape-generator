@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UI.View.UserControls.About.Interface
+namespace UI.Model.Enumeration
 {
-    interface IAboutView
+    enum MainFormUserControls
     {
+        Menu = 1,
+        Settings = 2,
+        About = 3
     }
 }

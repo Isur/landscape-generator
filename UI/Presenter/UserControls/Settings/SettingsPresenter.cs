@@ -15,9 +15,16 @@ namespace UI.Presenter.UserControls.Settings
             this.settingsView = settingsView;
         }
 
-        public void GenerateTerrain()
+        public void InitializeSettings()
         {
-            //TODO: Generate terrain and save to file in JSON format
+            settingsView.Stepness = PerlinNoise.Properties.Settings.Default.Stepness;
+            settingsView.Mountainousness = PerlinNoise.Properties.Settings.Default.Mountainousness;
+        }
+
+        public void SaveSettings()
+        {
+            PerlinNoise.Properties.Settings.Default.Stepness = settingsView.Stepness;
+            PerlinNoise.Properties.Settings.Default.Mountainousness = settingsView.Mountainousness;
         }
     }
 }

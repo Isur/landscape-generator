@@ -9,6 +9,5 @@ namespace UI.View.Menu.Interface
 {
     interface IMainView
     {
-        ContainerControl UserControlContainer { set; }
     }
 }

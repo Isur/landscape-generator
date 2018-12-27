@@ -39,7 +39,7 @@
             this.trBarEnvironmentElements = new System.Windows.Forms.TrackBar();
             this.cmbBoxLandscapeSize = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSaveAndGenerate = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trBarWaterLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trBarStepness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trBarMountainousness)).BeginInit();
@@ -137,21 +137,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnSaveAndGenerate
+            // btnApply
             // 
-            this.btnSaveAndGenerate.Location = new System.Drawing.Point(383, 607);
-            this.btnSaveAndGenerate.Name = "btnSaveAndGenerate";
-            this.btnSaveAndGenerate.Size = new System.Drawing.Size(138, 23);
-            this.btnSaveAndGenerate.TabIndex = 11;
-            this.btnSaveAndGenerate.Text = "Save and Generate";
-            this.btnSaveAndGenerate.UseVisualStyleBackColor = true;
-            this.btnSaveAndGenerate.Click += new System.EventHandler(this.btnSaveAndGenerate_Click);
+            this.btnApply.Location = new System.Drawing.Point(383, 607);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(138, 23);
+            this.btnApply.TabIndex = 11;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // SettingsUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnSaveAndGenerate);
+            this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cmbBoxLandscapeSize);
             this.Controls.Add(this.trBarEnvironmentElements);
@@ -187,6 +187,6 @@
         private System.Windows.Forms.TrackBar trBarEnvironmentElements;
         private System.Windows.Forms.ComboBox cmbBoxLandscapeSize;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSaveAndGenerate;
+        private System.Windows.Forms.Button btnApply;
     }
 }
