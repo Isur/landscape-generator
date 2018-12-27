@@ -45,7 +45,7 @@ namespace InsightEngine.Model.Color
             });
         }
 
-        public int GetColor(Vector3 position)
+        public KeyValuePair<int, ColorRegion> GetColor(Vector3 position)
         {
             var randomVariation = random.Next(-2, 2);
             var variation = (int)perlin.CalculatePerlinOctaves((int)position.X, (int)position.Z, width);//random.Next(-20, 20);
@@ -61,11 +61,11 @@ namespace InsightEngine.Model.Color
                     //var g = GetColorValue(region.Color.G + variation);
                     //var b = GetColorValue(region.Color.B + variation);
                     var color = System.Drawing.Color.FromArgb(r, g, b).ToArgb();
-                    return color;
+                    return new KeyValuePair<int, ColorRegion>(color, region);
                 }
             }
 
-            return regions[regions.Count - 1].Color.ToArgb();
+            return new KeyValuePair<int, ColorRegion>(regions[regions.Count - 1].Color.ToArgb(), regions[regions.Count - 1]);
         }
 
         private int GetColorValue(int color)

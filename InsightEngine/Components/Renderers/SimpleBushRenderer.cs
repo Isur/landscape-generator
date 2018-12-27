@@ -16,7 +16,7 @@ namespace InsightEngine.Components.Renderers
 
         protected override void GeneratePoints(GraphicsStream data)
         {
-            var colorBase = Color.FromArgb(20, 200, 20);
+            var colorBase = Color.FromArgb(20, 130, 20);
             var color = RandomizeColor(colorBase);
 
             var point = new Vector3(0, 0, 0) * Scale + Transform.Position;

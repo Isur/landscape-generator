@@ -104,16 +104,18 @@ namespace InsightEngine.Components
                     var y = PerlinVerts[x, z];
                     verts[k].Position = new Vector3(x, y, z);
 
-                    //if (rand.Next(0, 10000) == 0)
-                    //    InstantiateBush(verts[k].Position);
-
                     int color = Color.Blue.ToArgb();
                     if (UseColors)
                     {
-                        if (y > 0)
-                            color = colorManager.GetColor(verts[k].Position);//Color.FromArgb(255, (int)map(y, 0, max, 255, 0), 0).ToArgb();
-                        else
-                            color = colorManager.GetColor(verts[k].Position);//Color.FromArgb((int)map(y, min, 0, 0, 255), 255, 0).ToArgb();
+                        var result = colorManager.GetColor(verts[k].Position);
+                        color = result.Key;
+
+                        // Jeśli zielony obszar to można stworzyć roślinkę
+                        if (Regions.IndexOf(result.Value) == 3)
+                        {
+                            if (rand.Next(0, 10000) == 0)
+                                InstantiateBush(verts[k].Position);
+                        }
                     }
                     else
                     {
