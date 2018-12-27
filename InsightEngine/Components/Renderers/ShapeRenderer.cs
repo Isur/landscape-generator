@@ -40,8 +40,7 @@ namespace InsightEngine.Components.Renderers
         /// </summary>
         protected void DrawMesh()
         {
-            for (var i = 0; i < mesh.NumberVertices; i++)
-                mesh.DrawSubset(i);
+            mesh.DrawSubset(0);
         }
 
         /// <summary>

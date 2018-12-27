@@ -33,7 +33,7 @@ namespace InsightEngine
             }
 
             Device.RenderState.Lighting = false;
-            Device.RenderState.CullMode = Cull.CounterClockwise; //sets which site of the triangles should be shown
+            Device.RenderState.CullMode = Cull.None; //sets which site of the triangles should be shown
             Device.RenderState.FillMode = FillMode.Solid; //this sets the mode so we can actually see the triangle construct of the terrain
         }
 

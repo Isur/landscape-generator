@@ -83,7 +83,7 @@ namespace TerrainGenerator
             var cuboidRenderer = new CuboidRenderer();
             var bushRenderer = new SimpleBushRenderer();
             //shape.AddComponent(cuboidRenderer);
-            //shape.AddComponent(bushRenderer);
+            shape.AddComponent(bushRenderer);
 
             //for (int i = 0; i < 1; i++)
             //{
@@ -99,8 +99,8 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775f, -1000f);
-
+                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775, -1000);
+                //new Microsoft.DirectX.Vector3(0, 135, -140);
             camera.AddComponent(cameraController);
 
 
@@ -109,15 +109,22 @@ namespace TerrainGenerator
             //terrainGenerator2.Regions.AddRange(regions);
             //terrain2.AddComponent(terrainGenerator2);
 
-            var waterGenerator = new WaterGenerator();
-            var water = new Entity();
-            water.AddComponent(waterGenerator);
+            //var waterGenerator = new WaterGenerator();
+            //var water = new Entity();
+            //water.AddComponent(waterGenerator);
+
+            //var cube = new Entity();
+            //var cubeRenderer = new XRenderer();
+            //cubeRenderer.Filename = "E:\\David\\Programowanie\\VS 2015\\LandscapeGenerator\\Models\\kjub.x";
+            //cube.AddComponent(cubeRenderer);
+
 
             //mainScene.AddEntity(water);
             mainScene.AddEntity(terrain);
             //mainScene.AddEntity(terrain2);
             mainScene.AddEntity(camera);
-            mainScene.AddEntity(shape);
+            //mainScene.AddEntity(shape);
+            //mainScene.AddEntity(cube);
 
             mainScene.Start();
         }
