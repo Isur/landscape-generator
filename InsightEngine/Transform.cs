@@ -12,5 +12,16 @@ namespace InsightEngine
             Position = new Vector3();
             Rotation = new Vector3();
         }
+
+        public Transform(Vector3 position) : this()
+        {
+            Position = position;
+        }
+
+        public Transform(float x, float y, float z) :
+            this(new Vector3(x, y, z))
+        {
+
+        }
     }
 }

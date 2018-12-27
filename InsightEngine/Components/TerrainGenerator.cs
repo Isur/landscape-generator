@@ -1,4 +1,5 @@
-﻿using InsightEngine.Contract;
+﻿using InsightEngine.Components.Renderers;
+using InsightEngine.Contract;
 using InsightEngine.Model.Color;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
@@ -103,6 +104,9 @@ namespace InsightEngine.Components
                     var y = PerlinVerts[x, z];
                     verts[k].Position = new Vector3(x, y, z);
 
+                    //if (rand.Next(0, 10000) == 0)
+                    //    InstantiateBush(verts[k].Position);
+
                     int color = Color.Blue.ToArgb();
                     if (UseColors)
                     {
@@ -120,6 +124,17 @@ namespace InsightEngine.Components
                     k++;
                 }
             }
+        }
+
+        void InstantiateBush(Vector3 position)
+        {
+            var transformm = new Transform(position);
+            var bush = new Entity();
+            bush.Transform = transformm;
+            var bushRenderer = new SimpleBushRenderer();
+            bushRenderer.Scale = 0.3f;
+            bush.AddComponent(bushRenderer);
+            Instantiate(bush);
         }
 
         float map(float s, float a1, float a2, float b1, float b2)

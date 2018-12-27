@@ -35,5 +35,9 @@ namespace InsightEngine.Contract
         {
             return entity.GetComponent<T>() as T;
         }
+        public void Instantiate(Entity entity)
+        {
+            this.entity.Scene.Instantiate(entity);
+        }
     }
 }

@@ -8,12 +8,14 @@ namespace InsightEngine
 {
     public class Scene
     {
-        List<Entity> entities { get; set; }
+        List<Entity> entities { get; }
+        List<Entity> entitiesToAdd { get; }
         public Device Device { get; set; }
 
         public Scene(Control control)
         {
             entities = new List<Entity>();
+            entitiesToAdd = new List<Entity>();
 
             SetupDevice(control);
         }
@@ -59,11 +61,24 @@ namespace InsightEngine
                 entity.Update();
             }
 
+            if (entitiesToAdd.Count > 0)
+            {
+                entities.AddRange(entitiesToAdd);
+                entitiesToAdd.Clear();
+            }
+
             Device.EndScene();
             Device.Present();
 
             Keyboard.Reset();
             Mouse.Reset();
+        }
+
+        public void Instantiate(Entity entity)
+        {
+            entitiesToAdd.Add(entity);
+            entity.Scene = this;
+            entity.Start();
         }
     }
 }
