@@ -99,7 +99,7 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775, -1000);
+                 new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775, -1000);
                 //new Microsoft.DirectX.Vector3(0, 135, -140);
             camera.AddComponent(cameraController);
 
@@ -118,6 +118,12 @@ namespace TerrainGenerator
             //cubeRenderer.Filename = "E:\\David\\Programowanie\\VS 2015\\LandscapeGenerator\\Models\\kjub.x";
             //cube.AddComponent(cubeRenderer);
 
+
+            var tree = new Entity();
+            var treeRenderer = new SimplePalmRenderer();
+            tree.AddComponent(treeRenderer);
+
+            //mainScene.AddEntity(tree);
 
             //mainScene.AddEntity(water);
             mainScene.AddEntity(terrain);

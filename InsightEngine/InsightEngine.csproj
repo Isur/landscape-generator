@@ -57,11 +57,13 @@
     <Compile Include="Components\Renderers\CuboidRenderer.cs" />
     <Compile Include="Components\Renderers\ShapeRenderer.cs" />
     <Compile Include="Components\Renderers\SimpleBushRenderer.cs" />
+    <Compile Include="Components\Renderers\SimplePalmRenderer.cs" />
     <Compile Include="Components\Renderers\XRenderer.cs" />
     <Compile Include="Components\TerrainGenerator.cs" />
     <Compile Include="Components\WaterGenerator.cs" />
     <Compile Include="Contract\Component.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Enum\PlantType.cs" />
     <Compile Include="Input\Keyboard.cs" />
     <Compile Include="Input\Mouse.cs" />
     <Compile Include="Model\Color\ColorManager.cs" />

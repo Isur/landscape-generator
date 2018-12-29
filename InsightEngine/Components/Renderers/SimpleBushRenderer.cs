@@ -1,6 +1,4 @@
 ﻿using Microsoft.DirectX;
-using Microsoft.DirectX.Direct3D;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -8,10 +6,6 @@ namespace InsightEngine.Components.Renderers
 {
     public class SimpleBushRenderer : ShapeRenderer
     {
-        public float Scale = 1;
-
-        Random rand = new Random();
-
         protected override int numberVerts { get { return 12; } }
 
         protected override void GeneratePoints(GraphicsStream data)
@@ -66,18 +60,6 @@ namespace InsightEngine.Components.Renderers
             point = new Vector3(5, 20, -10) * Scale + Transform.Position;
             color = RandomizeColor(colorBase);
             SetPoint(data, point, color);
-        }
-
-        int RandomizeColor(Color color)
-        {
-            var variation = rand.Next(-20, 20);
-            return Color.FromArgb(color.R + variation,
-                color.G + variation, color.B + variation).ToArgb();
-        }
-
-        void SetPoint(GraphicsStream data, Vector3 point, int color)
-        {
-            data.Write(new CustomVertex.PositionColored(point, color));
         }
 
         protected override void SetIndices(List<short> indices)

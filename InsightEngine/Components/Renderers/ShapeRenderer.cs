@@ -3,6 +3,7 @@ using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace InsightEngine.Components.Renderers
 {
@@ -20,6 +21,10 @@ namespace InsightEngine.Components.Renderers
         /// Lista określająca w jaki sposób punkty mają być ze sobą połączone.
         /// </summary>
         protected List<short> indices = new List<short>();
+
+        public float Scale = 1;
+
+        protected Random rand = new Random();
 
 
         public override void Start()
@@ -111,6 +116,38 @@ namespace InsightEngine.Components.Renderers
             Vector3 meshcenter;
             meshradius = Geometry.ComputeBoundingSphere(stream, mesh.NumberVertices, mesh.VertexFormat, out meshcenter) * scaling;
             vertices.Unlock();
+        }
+
+        protected int RandomizeColor(Color color)
+        {
+            try
+            {
+                var variation = rand.Next(-30, 30);
+                return Color.FromArgb(color.R + variation,
+                    color.G + variation, color.B + variation).ToArgb();
+            }
+            catch (Exception)
+            {
+                return color.ToArgb();
+            }
+        }
+
+        protected void SetPoint(GraphicsStream data, Vector3 point, int color)
+        {
+            data.Write(new CustomVertex.PositionColored(point, color));
+        }
+
+        protected Vector3 GetPointWithTransformAndScale(float x, float y, float z)
+        {
+            return new Vector3(0, 0, 0) * Scale + Transform.Position;
+        }
+
+        protected void SetColoredPoint(float x, float y, float z,
+            Color colorBase, GraphicsStream data)
+        {
+            var point = new Vector3(x, y, z) * Scale + Transform.Position;
+            var color = RandomizeColor(colorBase);
+            SetPoint(data, point, color);
         }
     }
 }

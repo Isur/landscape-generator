@@ -1,5 +1,6 @@
 ﻿using InsightEngine.Components.Renderers;
 using InsightEngine.Contract;
+using InsightEngine.Enum;
 using InsightEngine.Model.Color;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
@@ -114,7 +115,9 @@ namespace InsightEngine.Components
                         if (Regions.IndexOf(result.Value) == 3)
                         {
                             if (rand.Next(0, 10000) == 0)
-                                InstantiateBush(verts[k].Position);
+                                InstantiatePlant(verts[k].Position, PlantType.BUSH);
+                            else if (rand.Next(0, 10000) == 0)
+                                InstantiatePlant(verts[k].Position, PlantType.PALM);
                         }
                     }
                     else
@@ -128,15 +131,22 @@ namespace InsightEngine.Components
             }
         }
 
-        void InstantiateBush(Vector3 position)
+        void InstantiatePlant(Vector3 position, PlantType type)
         {
             var transformm = new Transform(position);
-            var bush = new Entity();
-            bush.Transform = transformm;
-            var bushRenderer = new SimpleBushRenderer();
-            bushRenderer.Scale = 0.3f;
-            bush.AddComponent(bushRenderer);
-            Instantiate(bush);
+            var plant = new Entity();
+            plant.Transform = transformm;
+
+            ShapeRenderer renderer = null;
+
+            if (type == PlantType.BUSH)
+                renderer = new SimpleBushRenderer();
+            else if (type == PlantType.PALM)
+                renderer = new SimplePalmRenderer();
+
+            renderer.Scale = 0.3f;
+            plant.AddComponent(renderer);
+            Instantiate(plant);
         }
 
         float map(float s, float a1, float a2, float b1, float b2)
