@@ -19,6 +19,8 @@ namespace InsightEngine.Components
         public int Width { get; set; } = 2000;
         public int Lenght { get; set; } = 2000;
         public bool UseColors { get; set; } = true;
+        public bool Use3dModels { get; set; } = true;
+        public float ModelGenerationChance { get; set; } = 0.0001f;
 
         public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
 
@@ -36,6 +38,8 @@ namespace InsightEngine.Components
         private ColorManager colorManager { get; set; }
 
         public SimplePerlinNoise Perlin { get; set; }
+
+        Random rand = new Random();
 
         public override void Start()
         {
@@ -81,7 +85,6 @@ namespace InsightEngine.Components
             var min = 0f;
             var max = 0f;
 
-            var rand = new Random();
             // gererating array of heights, highest point and lowest point
             for (int z = 0; z < Width; z++)
             {
@@ -111,13 +114,9 @@ namespace InsightEngine.Components
                         var result = colorManager.GetColor(verts[k].Position);
                         color = result.Key;
 
-                        // Jeśli zielony obszar to można stworzyć roślinkę
-                        if (Regions.IndexOf(result.Value) == 3)
+                        if (CanGenerate3dModel(result.Value))
                         {
-                            if (rand.Next(0, 10000) == 0)
-                                InstantiatePlant(verts[k].Position, PlantType.BUSH);
-                            else if (rand.Next(0, 10000) == 0)
-                                InstantiatePlant(verts[k].Position, PlantType.PALM);
+                            Generate3dModel(verts[k].Position);
                         }
                     }
                     else
@@ -131,7 +130,21 @@ namespace InsightEngine.Components
             }
         }
 
-        void InstantiatePlant(Vector3 position, PlantType type)
+        bool CanGenerate3dModel(ColorRegion region)
+        {
+            var chance = rand.Next(0, (int)(ModelGenerationChance / ModelGenerationChance / ModelGenerationChance));
+            var regionId = Regions.IndexOf(region);
+            return Use3dModels && chance == 0 && regionId == 3;
+        }
+
+        void Generate3dModel(Vector3 position)
+        {
+            var plantVariations = System.Enum.GetNames(typeof(ObjectType)).Length;
+            var plantType = (ObjectType)rand.Next(0, plantVariations);
+            InstantiatePlant(position, plantType);
+        }
+
+        void InstantiatePlant(Vector3 position, ObjectType type)
         {
             var transformm = new Transform(position);
             var plant = new Entity();
@@ -139,10 +152,12 @@ namespace InsightEngine.Components
 
             ShapeRenderer renderer = null;
 
-            if (type == PlantType.BUSH)
+            if (type == ObjectType.BUSH)
                 renderer = new SimpleBushRenderer();
-            else if (type == PlantType.PALM)
+            else if (type == ObjectType.PALM)
                 renderer = new SimplePalmRenderer();
+            else if (type == ObjectType.ROCK)
+                renderer = new SimpleRockRenderer();
 
             renderer.Scale = 0.3f;
             plant.AddComponent(renderer);

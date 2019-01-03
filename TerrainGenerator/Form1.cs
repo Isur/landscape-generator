@@ -82,8 +82,10 @@ namespace TerrainGenerator
             var shape = new Entity();
             var cuboidRenderer = new CuboidRenderer();
             var bushRenderer = new SimpleBushRenderer();
+            var rockRenderer = new SimpleRockRenderer();
             //shape.AddComponent(cuboidRenderer);
-            shape.AddComponent(bushRenderer);
+            //shape.AddComponent(bushRenderer);
+            shape.AddComponent(rockRenderer);
 
             //for (int i = 0; i < 1; i++)
             //{
@@ -99,7 +101,7 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                 new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775, -1000);
+                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775, -1000);
                 //new Microsoft.DirectX.Vector3(0, 135, -140);
             camera.AddComponent(cameraController);
 

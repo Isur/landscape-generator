@@ -1,8 +1,9 @@
 ﻿namespace InsightEngine.Enum
 {
-    public enum PlantType
+    public enum ObjectType
     {
         BUSH,
-        PALM
+        PALM,
+        ROCK
     }
 }
