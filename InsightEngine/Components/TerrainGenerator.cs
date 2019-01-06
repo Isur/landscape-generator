@@ -19,7 +19,7 @@ namespace InsightEngine.Components
         public int Width { get; set; } = 2000;
         public int Lenght { get; set; } = 2000;
         public bool UseColors { get; set; } = true;
-        public bool Use3dModels { get; set; } = true;
+        public bool Use3dModels { get; set; } = false;
         public float ModelGenerationChance { get; set; } = 0.0001f;
 
         public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
