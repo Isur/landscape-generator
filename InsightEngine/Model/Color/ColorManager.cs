@@ -1,5 +1,6 @@
 ﻿using Microsoft.DirectX;
 using PerlinNoise;
+using PerlinNoise.Interface;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +16,7 @@ namespace InsightEngine.Model.Color
         private int colorVariation { get; } = 10;
 
         private const int width = 500;
-        private SimplePerlinNoise perlin = new SimplePerlinNoise(width, 3);
+        private INoiseGenerator perlin = new SimplePerlinNoise(width, 3);
 
 
         public ColorManager(int maxHeight, int minHeight, List<ColorRegion> regions)
@@ -48,7 +49,7 @@ namespace InsightEngine.Model.Color
         public KeyValuePair<int, ColorRegion> GetColor(Vector3 position)
         {
             var randomVariation = random.Next(-2, 2);
-            var variation = (int)perlin.CalculatePerlinOctaves((int)position.X, (int)position.Z, width);//random.Next(-20, 20);
+            var variation = (int)perlin.CalculateNoiseValue((int)position.X, (int)position.Z, width);//random.Next(-20, 20);
             variation /= 10;
             foreach (var region in regions)
             {

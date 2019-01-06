@@ -5,6 +5,7 @@ using InsightEngine.Model.Color;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
 using PerlinNoise;
+using PerlinNoise.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -37,7 +38,7 @@ namespace InsightEngine.Components
 
         private ColorManager colorManager { get; set; }
 
-        public SimplePerlinNoise Perlin { get; set; }
+        public INoiseGenerator NoiseGenerator { get; set; }
 
         Random rand = new Random();
 
@@ -90,7 +91,7 @@ namespace InsightEngine.Components
             {
                 for (int x = 0; x < Lenght; x++)
                 {
-                    var y = Perlin.CalculatePerlinOctaves(x, z, Width);
+                    var y = NoiseGenerator.CalculateNoiseValue(x, z, Width);
                     PerlinVerts[x, z] = y;
 
                     if (y < min) min = y;

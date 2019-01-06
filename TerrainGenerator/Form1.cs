@@ -60,21 +60,26 @@ namespace TerrainGenerator
             //dodawanie komponentów
             mainScene = new Scene(this);
 
-            var perlin = new SimplePerlinNoise(2000, 2);
-
             var regions = new List<ColorRegion>()
             {
-                new ColorRegion(Color.FromArgb(240, 240, 240), 1), // Biały na szczyty gór
-                new ColorRegion(Color.FromArgb(180, 170, 170), 1), // Szary na wzniesienia
+                new ColorRegion(Color.FromArgb(240, 240, 240), 0.5), // Biały na szczyty gór
+                new ColorRegion(Color.FromArgb(180, 170, 170), 0.8), // Szary na wzniesienia
                 new ColorRegion(Color.FromArgb(175, 120, 50), 0.4), // Brązowy na ziemie
-                new ColorRegion(Color.FromArgb(60, 200, 60), 1.6), // Zielony na doliny
-                new ColorRegion(Color.FromArgb(230, 235, 80), 0.2), //Zółty na piasek
-                new ColorRegion(Color.FromArgb(55, 120, 230), 1) // Niebieski na wodę 
+                new ColorRegion(Color.FromArgb(50, 180, 50), 0.1), // Ciemno-zielony na wyżyny
             };
+
+            for (int i = 10; i > 1; i--)
+            {
+                regions.Add(new ColorRegion(Color.FromArgb(60 - i, 200 - 2 * i, 60 - i), 0.1));//Zielone
+            }
+
+            regions.Add(new ColorRegion(Color.FromArgb(60, 200, 60), 0.1));  // Zielony na doliny
+            regions.Add(new ColorRegion(Color.FromArgb(230, 235, 80), 0.1)); //Zółty na piasek
+            regions.Add(new ColorRegion(Color.FromArgb(55, 120, 230), 0.3)); // Niebieski na wodę 
 
             var terraintGenerator = new InsightEngine.Components.TerrainGenerator();
             terraintGenerator.Regions.AddRange(regions);
-            terraintGenerator.Perlin = perlin;
+            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2); ;
 
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
