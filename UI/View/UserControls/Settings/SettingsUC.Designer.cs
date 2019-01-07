@@ -121,7 +121,13 @@
             // 
             // cmbBoxLandscapeSize
             // 
+            this.cmbBoxLandscapeSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxLandscapeSize.FormattingEnabled = true;
+            this.cmbBoxLandscapeSize.Items.AddRange(new object[] {
+            "500",
+            "1000",
+            "1500",
+            "2000"});
             this.cmbBoxLandscapeSize.Location = new System.Drawing.Point(200, 250);
             this.cmbBoxLandscapeSize.Name = "cmbBoxLandscapeSize";
             this.cmbBoxLandscapeSize.Size = new System.Drawing.Size(321, 21);

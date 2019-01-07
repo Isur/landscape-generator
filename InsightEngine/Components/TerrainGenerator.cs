@@ -16,9 +16,6 @@ namespace InsightEngine.Components
     {
         public float Devider { get; set; } = 99f;
         public float Multiplier { get; set; } = 1000f;
-
-        public int Width { get; set; } = 2000;
-        public int Lenght { get; set; } = 2000;
         public bool UseColors { get; set; } = true;
         public bool Use3dModels { get; set; } = false;
         public float ModelGenerationChance { get; set; } = 0.0001f;
@@ -44,8 +41,8 @@ namespace InsightEngine.Components
 
         public override void Start()
         {
-            vertCount = Width * Lenght;
-            indCount = (Width - 1) * (Lenght - 1) * 6;
+            vertCount = Properties.Settings.Default.LandscapeSize * Properties.Settings.Default.LandscapeSize;
+            indCount = (Properties.Settings.Default.LandscapeSize - 1) * (Properties.Settings.Default.LandscapeSize - 1) * 6;
 
             GenerateTerrain();
 
@@ -82,16 +79,16 @@ namespace InsightEngine.Components
             verts = new CustomVertex.PositionColored[vertCount];
             int k = 0;
 
-            PerlinVerts = new float[Width, Lenght];
+            PerlinVerts = new float[Properties.Settings.Default.LandscapeSize, Properties.Settings.Default.LandscapeSize];
             var min = 0f;
             var max = 0f;
 
             // gererating array of heights, highest point and lowest point
-            for (int z = 0; z < Width; z++)
+            for (int z = 0; z < Properties.Settings.Default.LandscapeSize; z++)
             {
-                for (int x = 0; x < Lenght; x++)
+                for (int x = 0; x < Properties.Settings.Default.LandscapeSize; x++)
                 {
-                    var y = NoiseGenerator.CalculateNoiseValue(x, z, Width);
+                    var y = NoiseGenerator.CalculateNoiseValue(x, z, Properties.Settings.Default.LandscapeSize);
                     PerlinVerts[x, z] = y;
 
                     if (y < min) min = y;
@@ -102,9 +99,9 @@ namespace InsightEngine.Components
             colorManager = new ColorManager((int)min, (int)max, Regions);
 
             // initialize vertexes
-            for (int z = 0; z < Width; z++)
+            for (int z = 0; z < Properties.Settings.Default.LandscapeSize; z++)
             {
-                for (int x = 0; x < Lenght; x++)
+                for (int x = 0; x < Properties.Settings.Default.LandscapeSize; x++)
                 {
                     var y = PerlinVerts[x, z];
                     verts[k].Position = new Vector3(x, y, z);
@@ -179,15 +176,15 @@ namespace InsightEngine.Components
             for (int i = 0; i < indCount; i += 6)
             {
                 indices[i] = k;                     //
-                indices[i + 1] = k + Lenght;     // left triangle of the square
-                indices[i + 2] = k + Lenght + 1; //
+                indices[i + 1] = k + Properties.Settings.Default.LandscapeSize;     // left triangle of the square
+                indices[i + 2] = k + Properties.Settings.Default.LandscapeSize + 1; //
 
                 indices[i + 3] = k;                   //
-                indices[i + 4] = k + Lenght + 1;   // right triangle of the square
+                indices[i + 4] = k + Properties.Settings.Default.LandscapeSize + 1;   // right triangle of the square
                 indices[i + 5] = k + 1;               //
                 k++;
                 l++;
-                if (l == Lenght - 1) //once one line of rectangles is created and the end of the line is beeing reached skip one k
+                if (l == Properties.Settings.Default.LandscapeSize - 1) //once one line of rectangles is created and the end of the line is beeing reached skip one k
                 {
                     l = 0;
                     k++;

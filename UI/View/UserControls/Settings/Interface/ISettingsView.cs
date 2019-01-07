@@ -12,5 +12,6 @@ namespace UI.View.UserControls.Settings.Interface
         int Stepness { get; set; }
         int Mountainousness { get; set; }
         int EnvironmentElements { get; set; }
+        int LandscapeSize { get; set; }
     }
 }
