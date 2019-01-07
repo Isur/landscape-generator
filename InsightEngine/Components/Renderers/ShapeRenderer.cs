@@ -7,8 +7,12 @@ using System.Drawing;
 
 namespace InsightEngine.Components.Renderers
 {
-    public abstract class ShapeRenderer : Component
+    public abstract class ShapeRenderer : Component, ISavable
     {
+        /// <summary>
+        /// Nazwa obiektu. Do rozpoznawania przy zapisie i odczycie.
+        /// </summary>
+        public abstract string Tag { get; }
         /// <summary>
         /// Obiekt siatki 3D.
         /// </summary>
@@ -148,6 +152,15 @@ namespace InsightEngine.Components.Renderers
             var point = new Vector3(x, y, z) * Scale + Transform.Position;
             var color = RandomizeColor(colorBase);
             SetPoint(data, point, color);
+        }
+
+        public string ToSavable()
+        {
+            var pos = Transform.Position;
+
+            var result = $"{{{pos.X}:{pos.Y}:{pos.Z}:{Tag}}},";
+
+            return result;
         }
     }
 }

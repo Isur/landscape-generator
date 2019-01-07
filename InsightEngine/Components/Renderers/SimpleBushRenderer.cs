@@ -6,6 +6,8 @@ namespace InsightEngine.Components.Renderers
 {
     public class SimpleBushRenderer : ShapeRenderer
     {
+        public override string Tag { get { return "Bush"; } }
+
         protected override int numberVerts { get { return 12; } }
 
         protected override void GeneratePoints(GraphicsStream data)

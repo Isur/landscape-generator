@@ -6,6 +6,7 @@ namespace InsightEngine.Components.Renderers
 {
     public class SimpleRockRenderer : ShapeRenderer
     {
+        public override string Tag { get { return "Rock"; } }
         public int Width { get; set; } = 30;
         public int Height { get; set; } = 20;
         public int Length { get; set; } = 30;

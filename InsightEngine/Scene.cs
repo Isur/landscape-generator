@@ -1,7 +1,12 @@
-﻿using InsightEngine.Input;
+﻿using InsightEngine.Components;
+using InsightEngine.Components.Renderers;
+using InsightEngine.Input;
 using Microsoft.DirectX.Direct3D;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace InsightEngine
@@ -79,6 +84,46 @@ namespace InsightEngine
             entitiesToAdd.Add(entity);
             entity.Scene = this;
             entity.Start();
+        }
+
+        public void Save(string file)
+        {
+            var toSave = GetContentToSave();
+            SaveContent(file, toSave);
+        }
+
+        private string GetContentToSave()
+        {
+            var terrainSavable = "";
+            var modelsSavable = new StringBuilder();
+            modelsSavable.Append("[");
+
+            foreach (var entity in entities)
+            {
+                var terrain = entity.GetComponent<TerrainGenerator>();
+                if (terrain != null)
+                    terrainSavable += terrain.ToSavable();
+
+                var model = entity.GetComponent<ShapeRenderer>();
+                if (model != null)
+                    modelsSavable.Append(model.ToSavable());
+            }
+
+            modelsSavable.Append("]");
+
+            var toSave = terrainSavable +
+                Environment.NewLine +
+                modelsSavable.ToString();
+
+            return toSave;
+        }
+
+        private void SaveContent(string file, string content)
+        {
+            using (var writer = new StreamWriter(file))
+            {
+                writer.WriteLine(content);
+            }
         }
     }
 }

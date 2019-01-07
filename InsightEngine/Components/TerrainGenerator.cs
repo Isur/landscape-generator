@@ -4,15 +4,15 @@ using InsightEngine.Enum;
 using InsightEngine.Model.Color;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
-using PerlinNoise;
 using PerlinNoise.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 
 namespace InsightEngine.Components
 {
-    public class TerrainGenerator : Component
+    public class TerrainGenerator : Component, ISavable
     {
         public float Devider { get; set; } = 99f;
         public float Multiplier { get; set; } = 1000f;
@@ -135,7 +135,7 @@ namespace InsightEngine.Components
         {
             var chance = rand.Next(0, (int)(ModelGenerationChance / ModelGenerationChance / ModelGenerationChance));
             var regionId = Regions.IndexOf(region);
-            return Use3dModels && chance == 0 && regionId == 3;
+            return Use3dModels && chance == 0 && regionId >= 3 && regionId < 15;
         }
 
         void Generate3dModel(Vector3 position)
@@ -205,6 +205,21 @@ namespace InsightEngine.Components
         {
             VertexBuffer buffer = (VertexBuffer)sender;
             buffer.SetData(verts, 0, LockFlags.None); //puts all vertices from the vertex array into the vertex buffer
+        }
+
+        public string ToSavable()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("[");
+
+            foreach (var vert in verts)
+            {
+                builder.Append($"{{{vert.X}:{vert.Y}:{vert.Z}:{vert.Color}}},");
+            }
+
+            builder.Append("]");
+
+            return builder.ToString();
         }
     }
 }

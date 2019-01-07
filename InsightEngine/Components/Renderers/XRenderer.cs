@@ -7,6 +7,7 @@ namespace InsightEngine.Components.Renderers
 {
     public class XRenderer : ShapeRenderer
     {
+        public override string Tag { get { return "X"; } }
         Texture[] textures;
         Material[] materials;
         float spacemeshradius;

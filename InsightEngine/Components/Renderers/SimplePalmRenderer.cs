@@ -6,6 +6,7 @@ namespace InsightEngine.Components.Renderers
 {
     public class SimplePalmRenderer : ShapeRenderer
     {
+        public override string Tag { get { return "Palm"; } }
         public int Height { get; set; } = 150;
         public int BaseWidth { get; set; } = 10;
 

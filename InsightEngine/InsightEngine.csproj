@@ -63,6 +63,7 @@
     <Compile Include="Components\TerrainGenerator.cs" />
     <Compile Include="Components\WaterGenerator.cs" />
     <Compile Include="Contract\Component.cs" />
+    <Compile Include="Contract\Savable.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Enum\ObjectType.cs" />
     <Compile Include="Input\Keyboard.cs" />

@@ -23,13 +23,13 @@ namespace InsightEngine
             component.SetEntity(this);
         }
 
-        public Component GetComponent<T>()
+        public T GetComponent<T>()
             where T : Component
         {
             foreach (var component in components)
             {
                 if (component is T)
-                    return component;
+                    return component as T;
             }
 
             return null;

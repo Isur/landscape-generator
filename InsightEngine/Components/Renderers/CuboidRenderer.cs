@@ -12,6 +12,8 @@ namespace InsightEngine.Components.Renderers
 
         protected override int numberVerts { get { return 8; } }
 
+        public override string Tag { get { return "Cuboid"; } }
+
         protected override void GeneratePoints(GraphicsStream data)
         {
             var halfWidth = Width / 2;
