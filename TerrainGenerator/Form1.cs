@@ -79,7 +79,7 @@ namespace TerrainGenerator
 
             var terraintGenerator = new InsightEngine.Components.TerrainGenerator();
             terraintGenerator.Regions.AddRange(regions);
-            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2); ;
+            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2);
 
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
@@ -125,6 +125,7 @@ namespace TerrainGenerator
             //cubeRenderer.Filename = "E:\\David\\Programowanie\\VS 2015\\LandscapeGenerator\\Models\\kjub.x";
             //cube.AddComponent(cubeRenderer);
 
+            //mainScene.Load("test.txt");
 
             var tree = new Entity();
             var treeRenderer = new SimplePalmRenderer();

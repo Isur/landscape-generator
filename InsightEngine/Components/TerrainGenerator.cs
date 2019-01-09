@@ -17,10 +17,10 @@ namespace InsightEngine.Components
         public float Devider { get; set; } = 99f;
         public float Multiplier { get; set; } = 1000f;
 
-        public int Width { get; set; } = 2000;
-        public int Lenght { get; set; } = 2000;
+        public int Width { get; set; } = 1500;
+        public int Lenght { get; set; } = 1500;
         public bool UseColors { get; set; } = true;
-        public bool Use3dModels { get; set; } = false;
+        public bool Use3dModels { get; set; } = true;
         public float ModelGenerationChance { get; set; } = 0.0001f;
 
         public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
@@ -28,7 +28,7 @@ namespace InsightEngine.Components
         int vertCount { get; set; }
         int indCount { get; set; }
 
-        CustomVertex.PositionColored[] verts { get; set; } = null;
+        public CustomVertex.PositionColored[] verts { get; set; } = null;
         int[] indices { get; set; } = null;
 
         VertexBuffer vertexBuffer { get; set; } = null;
@@ -61,7 +61,8 @@ namespace InsightEngine.Components
 
         private void GenerateTerrain()
         {
-            GenerateVertex();
+            if (verts == null)
+                GenerateVertex();
             GenerateIndex();
 
             vertexBuffer = new VertexBuffer(typeof(CustomVertex.PositionColored), vertCount, device, Usage.Dynamic | Usage.WriteOnly, CustomVertex.PositionColored.Format, Pool.Default);
@@ -214,7 +215,7 @@ namespace InsightEngine.Components
 
             foreach (var vert in verts)
             {
-                builder.Append($"{{{vert.X}:{vert.Y}:{vert.Z}:{vert.Color}}},");
+                builder.Append($"{{{vert.X}:{vert.Y}:{vert.Z}:{vert.Color}}};");
             }
 
             builder.Append("]");
