@@ -30,16 +30,16 @@ namespace UI.View.UserControls.MenuOptions
             this.menuPresenter = new MenuPresenter(this);
         }
 
-        [STAThread]
+        //[STAThread]
         private void btnLoadLandscape_Click(object sender, EventArgs e)
         {
-            //Thread landscapeThread = new Thread(delegate ()
-            //{
-            //    new TerrainGenerator.Form1().Show();
-            //});
+            Thread landscapeThread = new Thread(delegate ()
+            {
+                new TerrainGenerator.Form1().Show();
+            });
 
-            //landscapeThread.SetApartmentState(ApartmentState.STA);
-            //landscapeThread.Start();
+            landscapeThread.SetApartmentState(ApartmentState.STA);
+            landscapeThread.Start();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

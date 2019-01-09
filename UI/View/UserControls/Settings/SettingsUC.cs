@@ -31,7 +31,7 @@ namespace UI.View.UserControls.Settings
 
         private void InitializeSettingsValues()
         {
-            this.settingsPresenter.InitializeSettings();
+            this.settingsPresenter.LoadSettings();
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace UI.View.UserControls.Settings
         public int Stepness { get { return this.trBarStepness.Value; } set { this.trBarStepness.Value = value; } }
         public int Mountainousness { get { return this.trBarMountainousness.Value; } set { this.trBarMountainousness.Value = value; } }
         public int EnvironmentElements { get { return this.trBarEnvironmentElements.Value; } set { this.trBarEnvironmentElements.Value = value; } }
-
+        public int LandscapeSize { get { return int.Parse(this.cmbBoxLandscapeSize.SelectedItem.ToString()); }set { this.cmbBoxLandscapeSize.SelectedIndex = this.cmbBoxLandscapeSize.FindStringExact(value.ToString()); } }
     }
 
 }
