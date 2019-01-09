@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Enumeration\MainFormUserControls.cs" />
+    <Compile Include="Model\Utilities\ArgumentCreator.cs" />
     <Compile Include="Presenter\Main\MainFormPresenter.cs" />
     <Compile Include="Presenter\UserControls\MenuOptions\MenuPresenter.cs" />
     <Compile Include="Presenter\UserControls\Settings\SettingsPresenter.cs" />
