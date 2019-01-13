@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace PerlinNoise.Config
 {
-    static class PerlinParameters
+    public static class PerlinParameters
     {
         static PerlinParameters()
         {
@@ -17,8 +15,8 @@ namespace PerlinNoise.Config
             };
         }
 
-        internal static readonly Dictionary<float, float> Scales;
-        internal static float power = 5.20f + Properties.Settings.Default.Stepness / 100f;
+        public static readonly Dictionary<float, float> Scales;
+        public static float power = 5.20f + Properties.Settings.Default.Stepness / 100f;
         internal const float offsetX = 100f;
         internal const float offsetZ = 100f;
     }

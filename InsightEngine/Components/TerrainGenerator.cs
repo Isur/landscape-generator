@@ -16,11 +16,11 @@ namespace InsightEngine.Components
     {
         public float Devider { get; set; } = 99f;
         public float Multiplier { get; set; } = 1000f;
-        public int Width { get; set; } = Properties.Settings.Default.LandscapeSize;
-        public int Lenght { get; set; } = Properties.Settings.Default.LandscapeSize;
+        public int Width { get; set; } = Settings.MapSize;
+        public int Lenght { get; set; } = Settings.MapSize;
         public bool UseColors { get; set; } = true;
-        public bool Use3dModels { get; set; } = false;
-        public float ModelGenerationChance { get; set; } = 0.0001f;
+        public bool Use3dModels { get; set; } = true;
+        public float ModelGenerationChance { get; set; } = Settings.ModelsChance;
 
         public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
 
