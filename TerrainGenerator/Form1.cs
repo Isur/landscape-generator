@@ -111,7 +111,7 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(InsightEngine.Properties.Settings.Default.LandscapeSize / 2, 2775, -1000);
+                new Microsoft.DirectX.Vector3(Settings.MapSize / 2, 2775, -1000);
             camera.AddComponent(cameraController);
 
             return camera;
@@ -171,6 +171,16 @@ namespace TerrainGenerator
                 var filename = saveDialog.FileName;
                 mainScene.Save(filename);
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }
