@@ -7,7 +7,7 @@ using PerlinNoise.Interface;
 
 namespace PerlinNoise
 {
-    public class SimplePerlinNoise : INoiseGenerator
+    public class PerlinNoise : INoiseGenerator
     {
         #region Private variables
 
@@ -17,7 +17,7 @@ namespace PerlinNoise
 
         #endregion
 
-        public SimplePerlinNoise(int gradientSize, int numberOfDimensions)
+        public PerlinNoise(int gradientSize, int numberOfDimensions)
         {
             this.gradientSize = gradientSize;
             this.numberOfDimensions = numberOfDimensions;

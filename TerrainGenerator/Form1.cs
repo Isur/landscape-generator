@@ -79,7 +79,7 @@ namespace TerrainGenerator
 
             var terraintGenerator = new InsightEngine.Components.TerrainGenerator();
             terraintGenerator.Regions.AddRange(regions);
-            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2); ;
+            terraintGenerator.NoiseGenerator = new global::PerlinNoise.PerlinNoise(2000, 2); ;
 
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
