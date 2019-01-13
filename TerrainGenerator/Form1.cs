@@ -79,7 +79,7 @@ namespace TerrainGenerator
 
             var terraintGenerator = new InsightEngine.Components.TerrainGenerator();
             terraintGenerator.Regions.AddRange(regions);
-            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2); ;
+            terraintGenerator.NoiseGenerator = new SimplePerlinNoise(2000, 2);
 
             var terrain = new Entity();
             terrain.AddComponent(terraintGenerator);
@@ -106,8 +106,8 @@ namespace TerrainGenerator
 
             var camera = new Entity();
             camera.Transform.Position =
-                new Microsoft.DirectX.Vector3(terraintGenerator.Width / 2, 2775, -1000);
-            //new Microsoft.DirectX.Vector3(0, 135, -140);
+                new Microsoft.DirectX.Vector3(InsightEngine.Properties.Settings.Default.LandscapeSize / 2, 2775, -1000);
+                //new Microsoft.DirectX.Vector3(0, 135, -140);
             camera.AddComponent(cameraController);
 
 
@@ -125,6 +125,7 @@ namespace TerrainGenerator
             //cubeRenderer.Filename = "E:\\David\\Programowanie\\VS 2015\\LandscapeGenerator\\Models\\kjub.x";
             //cube.AddComponent(cubeRenderer);
 
+            //mainScene.Load("test.txt");
 
             var tree = new Entity();
             var treeRenderer = new SimplePalmRenderer();

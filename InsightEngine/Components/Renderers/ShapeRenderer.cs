@@ -158,7 +158,7 @@ namespace InsightEngine.Components.Renderers
         {
             var pos = Transform.Position;
 
-            var result = $"{{{pos.X}:{pos.Y}:{pos.Z}:{Tag}}},";
+            var result = $"{{{pos.X}:{pos.Y}:{pos.Z}:{Tag}}};";
 
             return result;
         }

@@ -15,16 +15,20 @@ namespace UI.Presenter.UserControls.Settings
             this.settingsView = settingsView;
         }
 
-        public void InitializeSettings()
+        public void LoadSettings()
         {
             settingsView.Stepness = PerlinNoise.Properties.Settings.Default.Stepness;
             settingsView.Mountainousness = PerlinNoise.Properties.Settings.Default.Mountainousness;
+            settingsView.LandscapeSize = InsightEngine.Properties.Settings.Default.LandscapeSize;
+            settingsView.EnvironmentElements = InsightEngine.Properties.Settings.Default.EnvironmentElements;
         }
 
         public void SaveSettings()
         {
             PerlinNoise.Properties.Settings.Default.Stepness = settingsView.Stepness;
             PerlinNoise.Properties.Settings.Default.Mountainousness = settingsView.Mountainousness;
+            InsightEngine.Properties.Settings.Default.LandscapeSize = settingsView.LandscapeSize;
+            InsightEngine.Properties.Settings.Default.EnvironmentElements = settingsView.EnvironmentElements;
         }
     }
 }

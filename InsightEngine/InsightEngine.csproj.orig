@@ -88,13 +88,16 @@
     <Compile Include="Input\Mouse.cs" />
     <Compile Include="Model\Color\ColorManager.cs" />
     <Compile Include="Model\Color\ColorRegion.cs" />
+<<<<<<< HEAD
+    <Compile Include="Model\Load\LoadModel.cs" />
+    <Compile Include="Model\Load\LoadTerrainVertex.cs" />
+=======
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Model\Load\LoadModel.cs" />
-    <Compile Include="Model\Load\LoadTerrainVertex.cs" />
+>>>>>>> 6f1d14128086f3a07ed27a17b12b886ac9cc0ae9
     <Compile Include="Scene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transform.cs" />

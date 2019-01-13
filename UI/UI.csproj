@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Enumeration\MainFormUserControls.cs" />
+    <Compile Include="Model\Utilities\ArgumentCreator.cs" />
     <Compile Include="Presenter\Main\MainFormPresenter.cs" />
     <Compile Include="Presenter\UserControls\MenuOptions\MenuPresenter.cs" />
     <Compile Include="Presenter\UserControls\Settings\SettingsPresenter.cs" />
@@ -105,6 +106,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InsightEngine\InsightEngine.csproj">
+      <Project>{a40181ce-446a-49e3-9346-b0721f75b6a6}</Project>
+      <Name>InsightEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PerlinNoise\PerlinNoise.csproj">
       <Project>{c07f63cc-c217-43d9-82c9-fd2776234ee5}</Project>
       <Name>PerlinNoise</Name>

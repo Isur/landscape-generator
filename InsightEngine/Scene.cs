@@ -1,6 +1,7 @@
 ﻿using InsightEngine.Components;
 using InsightEngine.Components.Renderers;
 using InsightEngine.Input;
+using InsightEngine.Model.Load;
 using Microsoft.DirectX.Direct3D;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,7 @@ namespace InsightEngine
             Device = new Device(0, DeviceType.Hardware, control, CreateFlags.HardwareVertexProcessing, pp);
         }
 
+        int u = 1;
         public void Update()
         {
             Device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Color.Black, 1, 0);
@@ -77,6 +79,12 @@ namespace InsightEngine
 
             Keyboard.Reset();
             Mouse.Reset();
+
+            if (u == 3)
+                //Save("test.txt");
+
+            u++;
+
         }
 
         public void Instantiate(Entity entity)
@@ -124,6 +132,65 @@ namespace InsightEngine
             {
                 writer.WriteLine(content);
             }
+        }
+
+        public void Load(string file)
+        {
+            var terrainLine = "";
+            var modelsLine = "";
+
+            using (var reader = new StreamReader(file))
+            {
+                terrainLine = reader.ReadLine();
+                modelsLine = reader.ReadLine();
+            }
+
+            modelsLine = modelsLine.Substring(1, modelsLine.Length - 3);
+            terrainLine = terrainLine.Substring(1, terrainLine.Length - 3);
+
+            var modelsSplitted = modelsLine.Split(';');
+            var terrainSplitted = terrainLine.Split(';');
+
+            var loadedVerts = new CustomVertex.PositionColored[1500 * 1500];
+
+            for (var i = 0; i < terrainSplitted.Length - 1; i++)
+            {
+                var loadTerranVertex = new LoadTerrainVertex(terrainSplitted[i]);
+                loadedVerts[i] = loadTerranVertex.ToColoredVertex();
+            }
+
+            var terrain = new Entity();
+            var terrainRenderer = new TerrainGenerator();
+            terrainRenderer.verts = loadedVerts;
+            terrain.AddComponent(terrainRenderer);
+            AddEntity(terrain);
+
+            for (var i = 0; i < modelsSplitted.Length - 1; i++)
+            {
+                var loadModel = new LoadModel(modelsSplitted[i]);
+
+                var entity = new Entity();
+                var transform = new Transform(loadModel.Position);
+                var renderer = GetRenderer(loadModel);
+                entity.Transform = transform;
+                entity.AddComponent(renderer);
+
+                AddEntity(entity);
+            }
+
+
+        }
+
+        private ShapeRenderer GetRenderer(LoadModel model)
+        {
+            if (model.Tag == "Rock")
+                return new SimpleRockRenderer();
+            if (model.Tag == "Palm")
+                return new SimplePalmRenderer();
+            if (model.Tag == "Bush")
+                return new SimpleBushRenderer();
+
+            return null;
         }
     }
 }
