@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using UI.View.UserControls.MenuOptions.Interface;
-using UI.Presenter.UserControls.MenuOptions;
-using UI.Model.Enumeration;
-using System.Threading;
 using System.Diagnostics;
+using System.Windows.Forms;
+using UI.Presenter.UserControls.MenuOptions;
+using UI.View.UserControls.MenuOptions.Interface;
 
 namespace UI.View.UserControls.MenuOptions
 {
@@ -30,7 +21,7 @@ namespace UI.View.UserControls.MenuOptions
         {
             this.menuPresenter = new MenuPresenter(this);
         }
-        
+
         private void btnLoadLandscape_Click(object sender, EventArgs e)
         {
             string filename = string.Empty;
@@ -42,10 +33,10 @@ namespace UI.View.UserControls.MenuOptions
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    filename = openFileDialog.FileName;
+                    filename = "\"" + openFileDialog.FileName + "\"";
+                    Process.Start("TerrainGenerator.exe", filename);
                 }
             }
-            Process.Start("TerrainGenerator.exe", filename);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

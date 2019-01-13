@@ -160,7 +160,6 @@ namespace InsightEngine.Components
             else if (type == ObjectType.ROCK)
                 renderer = new SimpleRockRenderer();
 
-            renderer.Scale = 0.3f;
             plant.AddComponent(renderer);
             Instantiate(plant);
         }

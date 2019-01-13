@@ -32,10 +32,17 @@ namespace TerrainGenerator
 
         public Form1(string[] args)
         {
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.Opaque, true); //this needs to be set so the invalidate() function in the paint event works properly
-            InitializeComponent();
+            try
+            {
+                this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.Opaque, true); //this needs to be set so the invalidate() function in the paint event works properly
+                InitializeComponent();
 
-            handleApplicationArguments(args);
+                handleApplicationArguments(args);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void handleApplicationArguments(string[] args)
@@ -129,54 +136,6 @@ namespace TerrainGenerator
             Thread.Sleep(10);
         }
 
-        private void solidToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //fillMode = FillMode.Solid;
-            //solidToolStripMenuItem.Checked = true;
-            //wireframeToolStripMenuItem.Checked = false;
-            //pointToolStripMenuItem.Checked = false;
-        }
-        private void wireframeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //fillMode = FillMode.WireFrame;
-            //solidToolStripMenuItem.Checked = false;
-            //wireframeToolStripMenuItem.Checked = true;
-            //pointToolStripMenuItem.Checked = false;
-        }
-        private void pointToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //fillMode = FillMode.Point;
-            //solidToolStripMenuItem.Checked = false;
-            //wireframeToolStripMenuItem.Checked = false;
-            //pointToolStripMenuItem.Checked = true;
-        }
-
-        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //ColorDialog cd = new ColorDialog();
-
-            //invalidating = false;
-            //if (cd.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    backgroundColor = cd.Color;
-            //}
-            //invalidating = true;
-            //this.Invalidate();
-        }
-
-        private void loadHeightmapToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //LoadHeightmap();
-            //vb.SetData(verts, 0, LockFlags.None);
-        }
-
-        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //GenerateVertex();
-            //vb.SetData(verts, 0, LockFlags.None);
-        }
-
-
         //Przekazanie inputu do silnika.
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -198,6 +157,20 @@ namespace TerrainGenerator
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             Mouse.Click = false;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveDialog = new SaveFileDialog();
+
+            saveDialog.Filter = "ton files (*.ton)|*.ton";
+            saveDialog.FilterIndex = 2;
+            saveDialog.RestoreDirectory = true;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                var filename = saveDialog.FileName;
+                mainScene.Save(filename);
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace InsightEngine.Components.Renderers
         /// </summary>
         protected List<short> indices = new List<short>();
 
-        public float Scale = 1;
+        public float Scale = 0.3f;
 
         protected Random rand = new Random();
 

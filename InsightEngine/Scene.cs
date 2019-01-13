@@ -56,10 +56,10 @@ namespace InsightEngine
             Device = new Device(0, DeviceType.Hardware, control, CreateFlags.HardwareVertexProcessing, pp);
         }
 
-        int u = 1;
         public void Update()
         {
-            Device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Color.Black, 1, 0);
+            var skyColor = Color.FromArgb(135, 206, 235);
+            Device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, skyColor, 1, 0);
             Device.BeginScene();
             Device.VertexFormat = CustomVertex.PositionColored.Format;
 
@@ -79,12 +79,6 @@ namespace InsightEngine
 
             Keyboard.Reset();
             Mouse.Reset();
-
-            if (u == 3)
-                //Save("test.txt");
-
-            u++;
-
         }
 
         public void Instantiate(Entity entity)
@@ -151,7 +145,8 @@ namespace InsightEngine
             var modelsSplitted = modelsLine.Split(';');
             var terrainSplitted = terrainLine.Split(';');
 
-            var loadedVerts = new CustomVertex.PositionColored[1500 * 1500];
+            var loadedVerts = new CustomVertex.PositionColored[terrainSplitted.Length];
+            Settings.MapSize = (int)Math.Sqrt(terrainSplitted.Length);
 
             for (var i = 0; i < terrainSplitted.Length - 1; i++)
             {
