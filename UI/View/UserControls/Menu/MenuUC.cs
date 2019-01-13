@@ -11,6 +11,7 @@ using UI.View.UserControls.MenuOptions.Interface;
 using UI.Presenter.UserControls.MenuOptions;
 using UI.Model.Enumeration;
 using System.Threading;
+using System.Diagnostics;
 
 namespace UI.View.UserControls.MenuOptions
 {
@@ -29,17 +30,22 @@ namespace UI.View.UserControls.MenuOptions
         {
             this.menuPresenter = new MenuPresenter(this);
         }
-
-        [STAThread]
+        
         private void btnLoadLandscape_Click(object sender, EventArgs e)
         {
-            //Thread landscapeThread = new Thread(delegate ()
-            //{
-            //    new TerrainGenerator.Form1().Show();
-            //});
+            string filename = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "ton files (*.ton)|*.ton";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
 
-            //landscapeThread.SetApartmentState(ApartmentState.STA);
-            //landscapeThread.Start();
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filename = openFileDialog.FileName;
+                }
+            }
+            Process.Start("TerrainGenerator.exe", filename);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
