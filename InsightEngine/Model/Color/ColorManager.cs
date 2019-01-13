@@ -16,7 +16,7 @@ namespace InsightEngine.Model.Color
         private int colorVariation { get; } = 10;
 
         private const int width = 500;
-        private INoiseGenerator perlin = new SimplePerlinNoise(width, 3);
+        private INoiseGenerator perlin = new PerlinNoise.PerlinNoise(width, 3);
 
 
         public ColorManager(int maxHeight, int minHeight, List<ColorRegion> regions)
