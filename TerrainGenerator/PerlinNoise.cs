@@ -4,12 +4,12 @@ using System.Text;
 
 namespace TerrainGenerator
 {
-    class PerlinNoise
+    class OldPerlinNoise
     {
         float[,,] gradient = new float[512, 512, 2];
         int SIZE = 100;
 
-        public PerlinNoise()
+        public OldPerlinNoise()
         {
             Random rand = new Random();
             for (int i = 0; i < SIZE; i++)
