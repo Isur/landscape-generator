@@ -42,13 +42,7 @@ namespace InsightEngine.Components
                 Transform.Position.Y + speed * (float)Math.Sin(rotXZ),
                 Transform.Position.Z + speed * (float)Math.Cos(rotY));
 
-            //camPosition = new Vector3(Transform.Position.X, Transform.Position.Y, Transform.Position.Z);
-
-            //rotY += 0.1f;
             camUp = new Vector3(0, 1, 0);
-
-            //rotY += 0.01f * Mouse.DeltaX;
-            //rotXZ -= 0.01f * Mouse.DeltaY;
 
             Transform.Rotation = new Vector3(
                 (float)Math.Sin(rotY) + Transform.Position.X + (float)(Math.Sin(rotXZ) * Math.Sin(rotY)),  //      

@@ -58,9 +58,7 @@ namespace InsightEngine.Model.Color
                     var r = GetColorValue(region.Color.R + random.Next(-colorVariation, colorVariation));
                     var g = GetColorValue(region.Color.G + random.Next(-colorVariation, colorVariation));
                     var b = GetColorValue(region.Color.B + random.Next(-colorVariation, colorVariation));
-                    //var r = GetColorValue(region.Color.R + variation);
-                    //var g = GetColorValue(region.Color.G + variation);
-                    //var b = GetColorValue(region.Color.B + variation);
+
                     var color = System.Drawing.Color.FromArgb(r, g, b).ToArgb();
                     return new KeyValuePair<int, ColorRegion>(color, region);
                 }
