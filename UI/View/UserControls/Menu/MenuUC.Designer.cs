@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUC));
             this.lblProjectTitle = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnInstructions = new System.Windows.Forms.Button();
@@ -39,66 +40,76 @@
             // lblProjectTitle
             // 
             this.lblProjectTitle.AutoSize = true;
-            this.lblProjectTitle.Location = new System.Drawing.Point(54, 43);
+            this.lblProjectTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProjectTitle.ForeColor = System.Drawing.Color.White;
+            this.lblProjectTitle.Location = new System.Drawing.Point(45, 25);
             this.lblProjectTitle.Name = "lblProjectTitle";
-            this.lblProjectTitle.Size = new System.Drawing.Size(110, 13);
+            this.lblProjectTitle.Size = new System.Drawing.Size(510, 55);
             this.lblProjectTitle.TabIndex = 0;
             this.lblProjectTitle.Text = "Landscape Generator";
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(168, 102);
+            this.btnSettings.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnSettings.Location = new System.Drawing.Point(75, 100);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(236, 23);
+            this.btnSettings.Size = new System.Drawing.Size(450, 50);
             this.btnSettings.TabIndex = 1;
             this.btnSettings.Text = "Set terrain settings";
-            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnInstructions
             // 
-            this.btnInstructions.Location = new System.Drawing.Point(251, 203);
+            this.btnInstructions.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnInstructions.Location = new System.Drawing.Point(75, 300);
             this.btnInstructions.Name = "btnInstructions";
-            this.btnInstructions.Size = new System.Drawing.Size(75, 23);
+            this.btnInstructions.Size = new System.Drawing.Size(450, 50);
             this.btnInstructions.TabIndex = 3;
             this.btnInstructions.Text = "Instructions";
-            this.btnInstructions.UseVisualStyleBackColor = true;
+            this.btnInstructions.UseVisualStyleBackColor = false;
             this.btnInstructions.Click += new System.EventHandler(this.btnInstructions_Click);
             // 
             // btnAbout
             // 
-            this.btnAbout.Location = new System.Drawing.Point(251, 232);
+            this.btnAbout.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAbout.Location = new System.Drawing.Point(75, 400);
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(75, 23);
+            this.btnAbout.Size = new System.Drawing.Size(450, 50);
             this.btnAbout.TabIndex = 4;
             this.btnAbout.Text = "About";
-            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.UseVisualStyleBackColor = false;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(251, 454);
+            this.btnExit.BackColor = System.Drawing.Color.IndianRed;
+            this.btnExit.Location = new System.Drawing.Point(74, 600);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(450, 50);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLoadLandscape
             // 
-            this.btnLoadLandscape.Location = new System.Drawing.Point(57, 145);
+            this.btnLoadLandscape.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnLoadLandscape.Location = new System.Drawing.Point(75, 200);
             this.btnLoadLandscape.Name = "btnLoadLandscape";
-            this.btnLoadLandscape.Size = new System.Drawing.Size(462, 52);
+            this.btnLoadLandscape.Size = new System.Drawing.Size(450, 50);
             this.btnLoadLandscape.TabIndex = 2;
             this.btnLoadLandscape.Text = "Load Landscape";
-            this.btnLoadLandscape.UseVisualStyleBackColor = true;
+            this.btnLoadLandscape.UseVisualStyleBackColor = false;
             this.btnLoadLandscape.Click += new System.EventHandler(this.btnLoadLandscape_Click);
             // 
             // MenuUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.btnLoadLandscape);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAbout);
