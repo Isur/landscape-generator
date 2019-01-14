@@ -26,7 +26,6 @@ namespace InsightEngine
             SetupDevice(control);
         }
 
-
         public void AddEntity(Entity entity)
         {
             entities.Add(entity);
@@ -148,7 +147,7 @@ namespace InsightEngine
             var loadedVerts = new CustomVertex.PositionColored[terrainSplitted.Length];
             Settings.MapSize = (int)Math.Sqrt(terrainSplitted.Length);
 
-            for (var i = 0; i < terrainSplitted.Length - 1; i++)
+            for (var i = 0; i < terrainSplitted.Length; i++)
             {
                 var loadTerranVertex = new LoadTerrainVertex(terrainSplitted[i]);
                 loadedVerts[i] = loadTerranVertex.ToColoredVertex();
@@ -172,8 +171,6 @@ namespace InsightEngine
 
                 AddEntity(entity);
             }
-
-
         }
 
         private ShapeRenderer GetRenderer(LoadModel model)

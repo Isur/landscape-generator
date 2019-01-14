@@ -75,9 +75,9 @@ namespace TerrainGenerator
         {
             switch (chance)
             {
-                case "1": return 0.00003f;
-                case "2": return 0.0001f;
-                case "3": return 0.0003f;
+                case "0": return 0.00003f;
+                case "1": return 0.0001f;
+                case "2": return 0.0003f;
                 default: return 0;
             }
         }
