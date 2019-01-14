@@ -1,0 +1,28 @@
+\babel@toc {polish}{}
+\contentsline {section}{\numberline {1}O projekcie}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Zesp\IeC {\'o}\IeC {\l }}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Temat}{3}{subsection.1.2}
+\contentsline {paragraph}{Generowanie realistycznych krajobraz\IeC {\'o}w 3D}{3}{section*.2}
+\contentsline {section}{\numberline {2}Projekt}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Plany i pomys\IeC {\l }y}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}UI/UX}{4}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Zawarto\IeC {\'s}\IeC {\'c}}{4}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Projekty UI}{5}{subsubsection.2.2.2}
+\contentsline {section}{\numberline {3}Teoria}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Losowo\IeC {\'s}\IeC {\'c}}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Algorytmy}{6}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Szum Perlina}{6}{subsubsection.3.2.1}
+\contentsline {section}{\numberline {4}Narz\IeC {\k e}dzia}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Kontrola wersji}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Zarzadzanie zespo\IeC {\l }em}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}\IeC {\'S}rodowisko}{9}{subsection.4.3}
+\contentsline {section}{\numberline {5}Aplikacja}{9}{section.5}
+\contentsline {subsection}{\numberline {5.1}Architektura}{9}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Silnik graficzny - InsightEngine}{9}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Wygenerowany teren - TerrainGenerator}{10}{subsubsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.3}Generator terenu - PerlinNoise}{10}{subsubsection.5.1.3}
+\contentsline {subsubsection}{\numberline {5.1.4}Interfejs u\IeC {\.z}ytkownika - UI}{10}{subsubsection.5.1.4}
+\contentsline {subsubsection}{\numberline {5.1.5}Po\IeC {\l }\IeC {\k a}czenie}{10}{subsubsection.5.1.5}
+\contentsline {subsection}{\numberline {5.2}Struktury danych}{11}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Schemat graficzny struktury systemu}{11}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Testowanie}{11}{subsection.5.4}
