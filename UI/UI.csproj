@@ -52,6 +52,13 @@
     <Compile Include="Presenter\UserControls\Settings\SettingsPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\UserControls\About\AboutUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\About\AboutUC.Designer.cs">
+      <DependentUpon>AboutUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\About\Interface\IAboutView.cs" />
     <Compile Include="View\Main\Interface\IMainView.cs" />
     <Compile Include="View\Main\MainForm.cs">
       <SubType>Form</SubType>
@@ -59,6 +66,13 @@
     <Compile Include="View\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\Instructions\InstructionsUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\Instructions\InstructionsUC.Designer.cs">
+      <DependentUpon>InstructionsUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\Instructions\Interface\IInstructionsView.cs" />
     <Compile Include="View\UserControls\Menu\Interface\IMenuView.cs" />
     <Compile Include="View\UserControls\Menu\MenuUC.cs">
       <SubType>UserControl</SubType>
@@ -85,6 +99,12 @@
     </Compile>
     <EmbeddedResource Include="View\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\About\AboutUC.resx">
+      <DependentUpon>AboutUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\Instructions\InstructionsUC.resx">
+      <DependentUpon>InstructionsUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserControls\Menu\MenuUC.resx">
       <DependentUpon>MenuUC.cs</DependentUpon>

@@ -50,57 +50,62 @@
             // 
             // btnSettings
             // 
-            this.btnSettings.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnSettings.BackColor = System.Drawing.Color.Silver;
             this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnSettings.Location = new System.Drawing.Point(75, 100);
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Location = new System.Drawing.Point(90, 120);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(450, 50);
+            this.btnSettings.Size = new System.Drawing.Size(420, 50);
             this.btnSettings.TabIndex = 1;
-            this.btnSettings.Text = "Set terrain settings";
+            this.btnSettings.Text = "Ustawienia terenu";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnInstructions
             // 
-            this.btnInstructions.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnInstructions.Location = new System.Drawing.Point(75, 300);
+            this.btnInstructions.BackColor = System.Drawing.Color.Silver;
+            this.btnInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnInstructions.Location = new System.Drawing.Point(90, 280);
             this.btnInstructions.Name = "btnInstructions";
-            this.btnInstructions.Size = new System.Drawing.Size(450, 50);
+            this.btnInstructions.Size = new System.Drawing.Size(420, 50);
             this.btnInstructions.TabIndex = 3;
-            this.btnInstructions.Text = "Instructions";
+            this.btnInstructions.Text = "Instrukcje";
             this.btnInstructions.UseVisualStyleBackColor = false;
             this.btnInstructions.Click += new System.EventHandler(this.btnInstructions_Click);
             // 
             // btnAbout
             // 
-            this.btnAbout.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnAbout.Location = new System.Drawing.Point(75, 400);
+            this.btnAbout.BackColor = System.Drawing.Color.Silver;
+            this.btnAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnAbout.Location = new System.Drawing.Point(90, 360);
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(450, 50);
+            this.btnAbout.Size = new System.Drawing.Size(420, 50);
             this.btnAbout.TabIndex = 4;
-            this.btnAbout.Text = "About";
+            this.btnAbout.Text = "O programie";
             this.btnAbout.UseVisualStyleBackColor = false;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.IndianRed;
-            this.btnExit.Location = new System.Drawing.Point(74, 600);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnExit.Location = new System.Drawing.Point(90, 580);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(450, 50);
+            this.btnExit.Size = new System.Drawing.Size(420, 50);
             this.btnExit.TabIndex = 5;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Wyjdź";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLoadLandscape
             // 
-            this.btnLoadLandscape.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnLoadLandscape.Location = new System.Drawing.Point(75, 200);
+            this.btnLoadLandscape.BackColor = System.Drawing.Color.Silver;
+            this.btnLoadLandscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnLoadLandscape.Location = new System.Drawing.Point(90, 200);
             this.btnLoadLandscape.Name = "btnLoadLandscape";
-            this.btnLoadLandscape.Size = new System.Drawing.Size(450, 50);
+            this.btnLoadLandscape.Size = new System.Drawing.Size(420, 50);
             this.btnLoadLandscape.TabIndex = 2;
-            this.btnLoadLandscape.Text = "Load Landscape";
+            this.btnLoadLandscape.Text = "Wczytaj krajobraz";
             this.btnLoadLandscape.UseVisualStyleBackColor = false;
             this.btnLoadLandscape.Click += new System.EventHandler(this.btnLoadLandscape_Click);
             // 

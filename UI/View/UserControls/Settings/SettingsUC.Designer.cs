@@ -49,64 +49,64 @@
             // 
             this.lblStepness.AutoSize = true;
             this.lblStepness.BackColor = System.Drawing.Color.Transparent;
-            this.lblStepness.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStepness.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStepness.ForeColor = System.Drawing.Color.White;
-            this.lblStepness.Location = new System.Drawing.Point(40, 30);
+            this.lblStepness.Location = new System.Drawing.Point(50, 310);
             this.lblStepness.Name = "lblStepness";
-            this.lblStepness.Size = new System.Drawing.Size(110, 25);
+            this.lblStepness.Size = new System.Drawing.Size(137, 31);
             this.lblStepness.TabIndex = 1;
-            this.lblStepness.Text = "Stepness";
+            this.lblStepness.Text = "Stromość";
             // 
             // lblMountainousness
             // 
             this.lblMountainousness.AutoSize = true;
-            this.lblMountainousness.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblMountainousness.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblMountainousness.ForeColor = System.Drawing.Color.White;
-            this.lblMountainousness.Location = new System.Drawing.Point(40, 170);
+            this.lblMountainousness.Location = new System.Drawing.Point(50, 170);
             this.lblMountainousness.Name = "lblMountainousness";
-            this.lblMountainousness.Size = new System.Drawing.Size(197, 25);
+            this.lblMountainousness.Size = new System.Drawing.Size(162, 31);
             this.lblMountainousness.TabIndex = 2;
-            this.lblMountainousness.Text = "Mountainousness";
+            this.lblMountainousness.Text = "Górzystość";
             // 
             // lblEnvElements
             // 
             this.lblEnvElements.AutoSize = true;
-            this.lblEnvElements.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblEnvElements.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblEnvElements.ForeColor = System.Drawing.Color.White;
-            this.lblEnvElements.Location = new System.Drawing.Point(40, 310);
+            this.lblEnvElements.Location = new System.Drawing.Point(50, 30);
             this.lblEnvElements.Name = "lblEnvElements";
-            this.lblEnvElements.Size = new System.Drawing.Size(245, 25);
+            this.lblEnvElements.Size = new System.Drawing.Size(358, 31);
             this.lblEnvElements.TabIndex = 3;
-            this.lblEnvElements.Text = "Environment elements";
+            this.lblEnvElements.Text = "Ilość elementów otoczenia";
             // 
             // lblLandscapeSize
             // 
             this.lblLandscapeSize.AutoSize = true;
-            this.lblLandscapeSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblLandscapeSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblLandscapeSize.ForeColor = System.Drawing.Color.White;
-            this.lblLandscapeSize.Location = new System.Drawing.Point(40, 450);
+            this.lblLandscapeSize.Location = new System.Drawing.Point(50, 450);
             this.lblLandscapeSize.Name = "lblLandscapeSize";
-            this.lblLandscapeSize.Size = new System.Drawing.Size(177, 25);
+            this.lblLandscapeSize.Size = new System.Drawing.Size(222, 31);
             this.lblLandscapeSize.TabIndex = 4;
-            this.lblLandscapeSize.Text = "Landscape size";
+            this.lblLandscapeSize.Text = "Wielkość terenu";
             // 
             // trBarStepness
             // 
-            this.trBarStepness.Location = new System.Drawing.Point(120, 70);
+            this.trBarStepness.Location = new System.Drawing.Point(140, 360);
             this.trBarStepness.Name = "trBarStepness";
             this.trBarStepness.Size = new System.Drawing.Size(321, 45);
             this.trBarStepness.TabIndex = 6;
             // 
             // trBarMountainousness
             // 
-            this.trBarMountainousness.Location = new System.Drawing.Point(120, 210);
+            this.trBarMountainousness.Location = new System.Drawing.Point(140, 220);
             this.trBarMountainousness.Name = "trBarMountainousness";
             this.trBarMountainousness.Size = new System.Drawing.Size(321, 45);
             this.trBarMountainousness.TabIndex = 7;
             // 
             // trBarEnvironmentElements
             // 
-            this.trBarEnvironmentElements.Location = new System.Drawing.Point(120, 350);
+            this.trBarEnvironmentElements.Location = new System.Drawing.Point(140, 80);
             this.trBarEnvironmentElements.Maximum = 2;
             this.trBarEnvironmentElements.Name = "trBarEnvironmentElements";
             this.trBarEnvironmentElements.Size = new System.Drawing.Size(321, 45);
@@ -121,7 +121,7 @@
             "1000",
             "1500",
             "2000"});
-            this.cmbBoxLandscapeSize.Location = new System.Drawing.Point(120, 490);
+            this.cmbBoxLandscapeSize.Location = new System.Drawing.Point(140, 500);
             this.cmbBoxLandscapeSize.Name = "cmbBoxLandscapeSize";
             this.cmbBoxLandscapeSize.Size = new System.Drawing.Size(321, 21);
             this.cmbBoxLandscapeSize.TabIndex = 9;
@@ -129,33 +129,36 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.IndianRed;
-            this.btnCancel.Location = new System.Drawing.Point(50, 600);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Location = new System.Drawing.Point(50, 580);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 50);
             this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Anuluj";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnGenerate
             // 
-            this.btnGenerate.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnGenerate.Location = new System.Drawing.Point(400, 600);
+            this.btnGenerate.BackColor = System.Drawing.Color.Silver;
+            this.btnGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnGenerate.Location = new System.Drawing.Point(400, 580);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(150, 50);
             this.btnGenerate.TabIndex = 12;
-            this.btnGenerate.Text = "Generate Terrain";
+            this.btnGenerate.Text = "Generuj teren";
             this.btnGenerate.UseVisualStyleBackColor = false;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // btnApply
             // 
-            this.btnApply.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnApply.Location = new System.Drawing.Point(225, 600);
+            this.btnApply.BackColor = System.Drawing.Color.Silver;
+            this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApply.Location = new System.Drawing.Point(225, 580);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(150, 50);
             this.btnApply.TabIndex = 11;
-            this.btnApply.Text = "Save Settings";
+            this.btnApply.Text = "Zapisz";
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 

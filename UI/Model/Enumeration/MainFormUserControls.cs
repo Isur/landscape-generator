@@ -10,6 +10,7 @@ namespace UI.Model.Enumeration
     {
         Menu = 1,
         Settings = 2,
-        About = 3
+        Instructions = 3,
+        About = 4
     }
 }
