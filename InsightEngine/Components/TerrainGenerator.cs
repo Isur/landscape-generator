@@ -21,6 +21,7 @@ namespace InsightEngine.Components
         public bool UseColors { get; set; } = true;
         public bool Use3dModels { get; set; } = true;
         public float ModelGenerationChance { get; set; } = Settings.ModelsChance;
+        public bool UseFlatWater { get; set; } = false;
 
         public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
 
@@ -101,6 +102,8 @@ namespace InsightEngine.Components
 
             colorManager = new ColorManager((int)min, (int)max, Regions);
 
+            var highestWater = min;
+
             // initialize vertexes
             for (int z = 0; z < Width; z++)
             {
@@ -114,6 +117,8 @@ namespace InsightEngine.Components
                     {
                         var result = colorManager.GetColor(verts[k].Position);
                         color = result.Key;
+                        if (Regions.IndexOf(result.Value) == Regions.Count - 1 && verts[k].Y > highestWater)
+                            highestWater = verts[k].Y;
 
                         if (CanGenerate3dModel(result.Value))
                         {
@@ -127,6 +132,22 @@ namespace InsightEngine.Components
 
                     verts[k].Color = color;
                     k++;
+                }
+            }
+
+            if (UseFlatWater)
+            {
+                k = 0;
+                for (var i = 0; i < Width; i++)
+                {
+                    for (int j = 0; j < Lenght; j++)
+                    {
+                        if (verts[k].Y < highestWater)
+                            verts[k] = new CustomVertex.PositionColored(
+                                verts[k].X, highestWater, verts[k].Z,
+                                verts[k].Color);
+                        k++;
+                    }
                 }
             }
         }
