@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblAboutPerlinText.Text" xml:space="preserve">
-    <value>Program 'Landscape Generator' służy do generacji losowych, realistycznych krajobrazów z naturalnymi elementami przyrody.  Do jego generacji korzysta on z nakładanych na siebie oktaw szumu Perlina, zapewniającymi naturalną nieregularność powierzchi.</value>
+    <value>Program 'Landscape Generator' służy do generowania losowych, realistycznych krajobrazów z naturalnymi elementami przyrody.  Do jego generacji korzysta on z nakładanych na siebie oktaw szumu Perlina, zapewniającymi naturalną nieregularność powierzchi.</value>
   </data>
   <data name="lblAboutEngineText.Text" xml:space="preserve">
     <value>Do wyświetlania rezultatów został wykorzystany autorski silnik 'Insight Engine' bazujący na bibliotece DirectX9. Renderuje on cały teren, wszystkie elementy krajobrazu oraz nakłada na pejzaż odpowiednie kolory.

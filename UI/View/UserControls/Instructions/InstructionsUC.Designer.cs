@@ -56,7 +56,7 @@
             this.lblInstructionsHeader.Name = "lblInstructionsHeader";
             this.lblInstructionsHeader.Size = new System.Drawing.Size(177, 39);
             this.lblInstructionsHeader.TabIndex = 14;
-            this.lblInstructionsHeader.Text = "Instrukcje";
+            this.lblInstructionsHeader.Text = "Instrukcja";
             // 
             // lblInstructionsText
             // 

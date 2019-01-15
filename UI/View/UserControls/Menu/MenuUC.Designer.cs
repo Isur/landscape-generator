@@ -69,7 +69,7 @@
             this.btnInstructions.Name = "btnInstructions";
             this.btnInstructions.Size = new System.Drawing.Size(420, 50);
             this.btnInstructions.TabIndex = 3;
-            this.btnInstructions.Text = "Instrukcje";
+            this.btnInstructions.Text = "Instrukcja";
             this.btnInstructions.UseVisualStyleBackColor = false;
             this.btnInstructions.Click += new System.EventHandler(this.btnInstructions_Click);
             // 

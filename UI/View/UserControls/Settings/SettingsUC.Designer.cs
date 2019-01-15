@@ -75,9 +75,9 @@
             this.lblEnvElements.ForeColor = System.Drawing.Color.White;
             this.lblEnvElements.Location = new System.Drawing.Point(50, 30);
             this.lblEnvElements.Name = "lblEnvElements";
-            this.lblEnvElements.Size = new System.Drawing.Size(358, 31);
+            this.lblEnvElements.Size = new System.Drawing.Size(381, 31);
             this.lblEnvElements.TabIndex = 3;
-            this.lblEnvElements.Text = "Ilość elementów otoczenia";
+            this.lblEnvElements.Text = "Liczba elementów otoczenia";
             // 
             // lblLandscapeSize
             // 
@@ -118,9 +118,10 @@
             this.cmbBoxLandscapeSize.FormattingEnabled = true;
             this.cmbBoxLandscapeSize.Items.AddRange(new object[] {
             "500",
+            "750",
             "1000",
-            "1500",
-            "2000"});
+            "1250",
+            "1500"});
             this.cmbBoxLandscapeSize.Location = new System.Drawing.Point(140, 500);
             this.cmbBoxLandscapeSize.Name = "cmbBoxLandscapeSize";
             this.cmbBoxLandscapeSize.Size = new System.Drawing.Size(321, 21);

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblInstructionsText.Text" xml:space="preserve">
-    <value>Ustawienia terenu - w ustawieniach mamy możliwość wyboru ilości elementów otoczenia w 3 trybach: mało, średnio, dużo. Górzystość określa jak często na naszym krajobrazie występować będą góry oraz tereny górzyste. Stromość określa, jak duży jest kąt nachylenia generowanych gór. Wielkość terenu określa ilość jednostek boku kwadratu, na jakim generowany będzie krajobraz.
+    <value>Ustawienia terenu - w ustawieniach mamy możliwość wyboru liczby elementów otoczenia w 3 trybach: mało, średnio, dużo. Górzystość określa jak często na naszym krajobrazie występować będą góry oraz tereny górzyste. Stromość określa, jak duży jest kąt nachylenia generowanych gór. Wielkość terenu określa ilość jednostek boku kwadratu, na jakim generowany będzie krajobraz.
 Stąd posiadamy 3 opcje:
 Anuluj - powrót do Menu.
 Zapisz - zapisanie ustawień do pliku, z którego możemy później wygenerować kraojbraz.
