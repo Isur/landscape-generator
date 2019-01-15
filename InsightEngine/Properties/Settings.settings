@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LandscapeSize" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2000</Value>
+      <Value Profile="(Default)">1000</Value>
     </Setting>
     <Setting Name="EnvironmentElements" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>

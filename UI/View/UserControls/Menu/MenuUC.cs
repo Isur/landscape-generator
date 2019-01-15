@@ -10,6 +10,8 @@ namespace UI.View.UserControls.MenuOptions
     {
         private MenuPresenter menuPresenter;
         public event EventHandler SettingsLaunched;
+        public event EventHandler InstructionsLaunched;
+        public event EventHandler AboutLaunched;
 
         public MenuUC()
         {
@@ -46,12 +48,12 @@ namespace UI.View.UserControls.MenuOptions
 
         private void btnInstructions_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Instrukcje użytkowania", "Instrukcje");
+            LaunchInstructions();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Informacje o programie Landscape Generator oraz silniku graficznym Insight", "About");
+            LaunchAbout();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -65,6 +67,16 @@ namespace UI.View.UserControls.MenuOptions
         private void LaunchSettings()
         {
             SettingsLaunched?.Invoke(this, null);
+        }
+
+        private void LaunchInstructions()
+        {
+            InstructionsLaunched?.Invoke(this, null);
+        }
+
+        private void LaunchAbout()
+        {
+            AboutLaunched?.Invoke(this, null);
         }
     }
 }

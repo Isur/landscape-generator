@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using UI.Model.Enumeration;
 using UI.Presenter.Menu;
 using UI.View.Menu.Interface;
+using UI.View.UserControls.About;
+using UI.View.UserControls.Instructions;
 using UI.View.UserControls.MenuOptions;
 using UI.View.UserControls.Settings;
 
@@ -20,6 +22,8 @@ namespace UI.View.Menu
         private MainFormPresenter mainFormPresenter;
         private MenuUC menuUC;
         private SettingsUC settingsUC;
+        private InstructionsUC instructionsUC;
+        private AboutUC aboutUC;
 
         public MainForm()
         {
@@ -41,6 +45,8 @@ namespace UI.View.Menu
                 Enabled = false
             };
             this.menuUC.SettingsLaunched += SetSettingsUserControl;
+            this.menuUC.InstructionsLaunched += SetInstructionsUserControl;
+            this.menuUC.AboutLaunched += SetAboutUserControl;
 
             this.settingsUC = new SettingsUC
             {
@@ -49,8 +55,24 @@ namespace UI.View.Menu
             };
             this.settingsUC.SettingsClosed += SetMenuUserControl;
 
+            this.instructionsUC = new InstructionsUC
+            {
+                Dock = DockStyle.Fill,
+                Enabled = false
+            };
+            this.instructionsUC.InstructionsClosed += SetMenuUserControl;
+
+            this.aboutUC = new AboutUC
+            {
+                Dock = DockStyle.Fill,
+                Enabled = false
+            };
+            this.aboutUC.AboutClosed += SetMenuUserControl;
+
             this.Controls.Add(this.menuUC);
             this.Controls.Add(this.settingsUC);
+            this.Controls.Add(this.instructionsUC);
+            this.Controls.Add(this.aboutUC);
 
             SetActiveUserControl((int)MainFormUserControls.Menu);
         }
@@ -60,7 +82,9 @@ namespace UI.View.Menu
             foreach (UserControl userControl in this.Controls)
             {
                 if ((userControl is MenuUC && activeUserControl == (int)MainFormUserControls.Menu) ||
-                    (userControl is SettingsUC && activeUserControl == (int)MainFormUserControls.Settings))
+                    (userControl is SettingsUC && activeUserControl == (int)MainFormUserControls.Settings) ||
+                    (userControl is InstructionsUC && activeUserControl == (int)MainFormUserControls.Instructions) ||
+                    (userControl is AboutUC && activeUserControl == (int)MainFormUserControls.About))
                 {
                     userControl.Visible = true;
                     userControl.Enabled = true;
@@ -81,6 +105,16 @@ namespace UI.View.Menu
         private void SetMenuUserControl(object sender, EventArgs e)
         {
             SetActiveUserControl((int)MainFormUserControls.Menu);
+        }
+
+        private void SetInstructionsUserControl(object sender, EventArgs e)
+        {
+            SetActiveUserControl((int)MainFormUserControls.Instructions);
+        }
+
+        private void SetAboutUserControl(object sender, EventArgs e)
+        {
+            SetActiveUserControl((int)MainFormUserControls.About);
         }
     }
 }
