@@ -61,7 +61,7 @@ namespace TerrainGenerator
                 Settings.MapSize = int.Parse(args[0]);
                 Settings.ModelsChance = getModelChance(args[1]);
                 PerlinParameters.power = float.Parse(args[2]);
-                PerlinParameters.Scales[4] = float.Parse(args[3]);
+                PerlinParameters.Scales[4] = 0.5f + float.Parse(args[3]) / 10;
 
                 initializeScene();
             }
