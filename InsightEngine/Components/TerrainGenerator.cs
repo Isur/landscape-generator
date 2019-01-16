@@ -21,7 +21,7 @@ namespace InsightEngine.Components
         public bool UseColors { get; set; } = true;
         public bool Use3dModels { get; set; } = true;
         public float ModelGenerationChance { get; set; } = Settings.ModelsChance;
-        public bool UseFlatWater { get; set; } = false;
+        public bool UseFlatWater { get; set; } = true;
 
         public List<ColorRegion> Regions { get; } = new List<ColorRegion>();
 
